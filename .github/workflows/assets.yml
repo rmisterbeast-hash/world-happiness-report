@@ -1,0 +1,39 @@
+name: Generate responsive WebP artwork
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'scripts/generate_webp.py'
+      - '.github/workflows/assets.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install conversion dependencies
+        run: pip install Pillow==11.3.0 CairoSVG==2.8.2
+      - name: Convert original artwork to responsive WebP and update HTML
+        run: python scripts/generate_webp.py
+      - name: Validate new source markup
+        run: |
+          node --version
+          node tests/validate.mjs
+          for img in images/*-640.webp images/*-1200.webp; do test -s "$img" || exit 1; done
+      - name: Commit built assets to main
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add images/*.webp *.html
+          if ! git diff --staged --quiet; then
+            git commit -m "Add responsive WebP copies of original illustration assets"
+            git push origin HEAD:main
+          fi
