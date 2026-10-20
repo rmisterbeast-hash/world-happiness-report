@@ -54,15 +54,15 @@ for(const file of ['data/countries.json','data/happiness.json','data/ranking.jso
 assert.ok(readFileSync('about.html','utf8').includes('"@type":"Dataset"'),'Dataset schema');
 console.log('PASS: data integrity, publication method distinctions, six HTML pages and Dataset JSON-LD');
 const about=readFileSync('about.html','utf8');
-const glossary=[...about.matchAll(/<dt>([^<]+)<\\/dt><dd>([^<]+)<\\/dd>/g)];
+const glossary=[...about.matchAll(/<dt>([^<]+)<\/dt><dd>([^<]+)<\/dd>/g)];
 assert.ok(glossary.length>=8 && glossary.length<=10,'8–10 glossary entries');
 for(const entry of glossary){
- const words=entry[2].trim().split(/\\s+/).length;
+ const words=entry[2].trim().split(/\s+/).length;
  assert.ok(words>=30 && words<=50,entry[1]+' glossary definition must have 30–50 words: '+words);
 }
 const totalWords=['index.html','countries.html','country.html','compare.html','factors.html','about.html'].reduce((sum,f)=>{
- const html=readFileSync(f,'utf8'),main=html.match(/<main id="main">([\\s\\S]*?)<\\/main>/)?.[1]||'';
- return sum+main.replace(/<[^>]+>/g,' ').trim().split(/\\s+/).length;
+ const html=readFileSync(f,'utf8'),main=html.match(/<main id="main">([\s\S]*?)<\/main>/)?.[1]||'';
+ return sum+main.replace(/<[^>]+>/g,' ').trim().split(/\s+/).length;
 },0);
 assert.ok(totalWords>=1300,'Site authored content must be at least 1300 words, found '+totalWords);
 console.log('PASS: 8–10 glossary items, each 30–50 words; site >= 1300 authored words');
