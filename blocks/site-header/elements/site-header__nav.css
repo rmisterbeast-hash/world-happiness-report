@@ -1,0 +1,1 @@
+.site-header__nav{display:flex;gap:7px;align-items:center}.site-header__nav a{display:inline-block;text-decoration:none;padding:7px 13px;border-radius:10px;font-size:.9rem;font-weight:700}.site-header__nav a:hover,.site-header__nav a[aria-current="page"]{background:var(--cream)}

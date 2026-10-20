@@ -1,0 +1,1 @@
+.modal{position:fixed;inset:0;z-index:100;display:grid;place-items:center;padding:20px}.modal[hidden]{display:none}.modal__shade{position:absolute;inset:0;background:rgba(28,34,54,.65)}
