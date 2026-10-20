@@ -62,7 +62,7 @@ async function renderIndex(){
 async function renderCatalog(){
  try{
  const {countries}=await loadData("countries"), regions=[...new Set(countries.map(c=>c.region))].sort();
- const select=$("#region-select"),search=$("#search-input"),sort=$("#sort-select"),grid=$("#countries-grid"),pages=$("#pagination");
+ const select=$("#region-select"),search=$("#search-input"),heroSearch=$("#hero-country-search"),sort=$("#sort-select"),grid=$("#countries-grid"),pages=$("#pagination");
  regions.forEach(region=>{const op=make("option",null,countries.find(c=>c.region===region)?.regionRu||region);op.value=region;select.append(op);});
  let current=1;
  function render(){
@@ -81,7 +81,9 @@ async function renderCatalog(){
    pages.append(btn("→",Math.min(maxPage,current+1),current===maxPage));
   }
  }
- [search,select,sort].forEach(el=>el.addEventListener(el===search?"input":"change",()=>{current=1;render();}));render();
+ [search,select,sort].forEach(el=>el.addEventListener(el===search?"input":"change",()=>{if(el===search&&heroSearch)heroSearch.value=search.value;current=1;render();}));
+ if(heroSearch)heroSearch.addEventListener("input",()=>{search.value=heroSearch.value;current=1;render();});
+ render();
  }catch(e){introError("catalog-status",e);}
 }
 function favoritesRead(){try{return JSON.parse(localStorage.getItem("whr-favorites")||"[]").filter(x=>typeof x==="string").slice(0,5);}catch{return [];}}
@@ -102,6 +104,7 @@ async function renderCountry(){
  text("#country-title",country?.nameRu||name);document.title=(country?.nameRu||name)+" — Атлас благополучия";
  text("#country-subtitle","Отчёт 2024 и годовые наблюдения "+(rows.length?rows[0].year+"–"+rows.at(-1).year:"не представлены")+"; показатели рассчитываются по разным методикам.");
  text("#country-score",formatScore(country?.score));text("#country-rank",country?.rank?"№ "+country.rank:"нет данных");
+ text("#country-hero-score",formatScore(country?.score));text("#country-hero-rank",country?.rank?"№ "+country.rank:"нет данных");
  setStatus("country-status",country?"Показаны опубликованный срез и отдельно годовой ряд.":"Страна доступна в истории, но отсутствует в рейтинге 2024.");
  if(rows.length){
   const years=[...new Set(rows.map(x=>x.year))].sort((a,b)=>a-b);

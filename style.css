@@ -40,3 +40,13 @@
  #compare-table td::before{content:attr(data-label);font-weight:700;font-size:.83rem;color:#656A7D;text-align:left;max-width:65%}
  .compare-links .button{width:100%}
 }
+
+/* First-screen information explicitly required by individual brief. */
+.hero__search{margin:20px 0 0;max-width:475px}
+.hero__search small{font-size:.77rem;font-weight:500;color:#5B6274}
+.hero__stats{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin:18px 0;max-width:570px}
+.hero__stat{display:flex;flex-direction:column;gap:2px;padding:14px 18px;background:rgba(255,254,250,.9);border:1px solid #D9D8C7;border-radius:14px}
+.hero__stat span{font-size:.77rem;font-weight:800;color:#4C536A}
+.hero__stat strong{font-family:Nunito,Arial,sans-serif;font-size:clamp(1.7rem,3vw,2.35rem);line-height:1.3;font-variant-numeric:tabular-nums}
+.hero__stat small{color:#596077;font-size:.73rem}
+@media(max-width:630px){.hero__stats{gap:9px}.hero__stat{padding:12px}.hero__stat strong{font-size:1.75rem}}
