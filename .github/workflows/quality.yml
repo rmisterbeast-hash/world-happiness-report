@@ -28,6 +28,7 @@ jobs:
           node --check tests/validate.mjs
       - name: Verify actual dataset integrity and page structure
         run: node tests/validate.mjs
+          node tests/contrast.mjs
       - name: Install Playwright browser
         run: |
           npm install --no-save @playwright/test@1.56.1

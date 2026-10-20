@@ -60,3 +60,28 @@ test('No JS page errors in core navigation',async({page})=>{
  }
  expect(exceptions).toEqual([]);
 });
+
+test('Калькулятор: все веса нулевые не дают фиктивного результата',async({page})=>{
+ await page.goto(base+'factors.html');
+ await expect(page.locator('#calculator-inputs input[type="range"]')).toHaveCount(6);
+ await page.locator('#calculator-inputs input[type="range"]').evaluateAll(inputs=>{
+   for(const input of inputs){input.value='0';input.dispatchEvent(new Event('input',{bubbles:true}));}
+ });
+ await page.locator('#calculate-btn').click();
+ await expect(page.locator('#calculator-result')).toContainText('задайте ненулевой вес');
+});
+test('Модальное окно: после Escape фокус возвращается на вызвавшую кнопку',async({page})=>{
+ await page.goto(base+'factors.html');
+ const trigger=page.locator('[data-info="gdp"]');
+ await trigger.click();
+ await expect(page.locator('#info-modal')).toBeVisible();
+ await page.keyboard.press('Escape');
+ await expect(page.locator('#info-modal')).toBeHidden();
+ await expect(trigger).toBeFocused();
+});
+test('Некорректный адрес карточки сообщает об ошибке без исключения',async({page})=>{
+ const errors=[];page.on('pageerror',e=>errors.push(e.message));
+ await page.goto(base+'country.html?name=CountryThatDoesNotExist');
+ await expect(page.locator('#country-status')).toContainText('Страна не найдена');
+ expect(errors).toEqual([]);
+});
