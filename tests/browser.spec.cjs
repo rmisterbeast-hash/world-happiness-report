@@ -121,3 +121,32 @@ test('Карта на мобильном: выбор страны без нео�
  await expect(page.locator('#map-country-score')).not.toHaveText('—');
  await expect(page.locator('#world-map-viewport').evaluate(e=>e.scrollWidth>e.clientWidth)).resolves.toBe(true);
 });
+
+test('У карты одинаковая толщина границ при выборе, наведении и фокусе',async({page})=>{
+ await page.goto(base);
+ await expect(page.locator('#map-status')).toContainText('143 стран');
+ await expect(page.locator('#world-map-svg > title')).toHaveCount(0);
+ await expect(page.locator('#world-map-svg')).toHaveAttribute('aria-label',/Географическая карта/);
+ const brazil=page.locator('#world-map-regions [data-country="Brazil"]');
+ await brazil.hover();
+ const afterHover=await page.evaluate(()=>{
+  const keys=['Finland','Russia','Brazil','Moldova'];
+  return keys.map(k=>{
+   const e=document.querySelector('#world-map-regions [data-country="'+k+'"]');
+   const style=getComputedStyle(e);
+   return {name:k,width:style.strokeWidth,stroke:style.stroke,vectorEffect:style.vectorEffect};
+  });
+ });
+ expect(new Set(afterHover.map(x=>x.width)).size).toBe(1);
+ expect(new Set(afterHover.map(x=>x.stroke)).size).toBe(1);
+ expect(afterHover.every(x=>x.vectorEffect==='non-scaling-stroke')).toBe(true);
+ await page.locator('#map-country-select').selectOption('Moldova');
+ const selected=page.locator('#world-map-regions [data-country="Moldova"]');
+ const regular=page.locator('#world-map-regions [data-country="Brazil"]');
+ const selectedWidth=await selected.evaluate(e=>getComputedStyle(e).strokeWidth);
+ const regularWidth=await regular.evaluate(e=>getComputedStyle(e).strokeWidth);
+ expect(selectedWidth).toBe(regularWidth);
+ await selected.focus();
+ expect(await selected.evaluate(e=>getComputedStyle(e).strokeWidth)).toBe(regularWidth);
+ await expect(page.locator('#world-map-tooltip')).toBeVisible();
+});

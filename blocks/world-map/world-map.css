@@ -8,12 +8,13 @@
 .world-map__toolbar .field{min-width:220px}
 .world-map__viewport{overflow-x:auto;overflow-y:hidden;background:linear-gradient(170deg,#E9F0ED,#F6F5E9);scrollbar-color:#AAB2A4 transparent;scrollbar-width:thin}
 .world-map__viewport svg{display:block;width:100%;min-width:690px;height:auto}
-.world-map__country{stroke:#FFFEFA;stroke-width:.95;stroke-linecap:round;stroke-linejoin:round;cursor:pointer;transition:fill .15s,stroke-width .15s;outline:none}
-.world-map__country:hover,.world-map__country:focus-visible{stroke:var(--ink);stroke-width:2.5;filter:brightness(1.06)}
-.world-map__country--selected{stroke:var(--ink);stroke-width:2.6}
+.world-map__country{stroke:#FFFEFA;stroke-width:1px;vector-effect:non-scaling-stroke;stroke-linecap:round;stroke-linejoin:round;cursor:pointer;transition:fill .15s,filter .15s;outline:none}
+.world-map__country:hover,.world-map__country:focus-visible{filter:brightness(.86) saturate(1.08)}
+.world-map__country--selected{filter:brightness(.76) saturate(1.2)}
+.world-map__country--selected:hover,.world-map__country--selected:focus-visible{filter:brightness(.7) saturate(1.18)}
 .world-map__country--no-data{cursor:help}
 .world-map__marker{cursor:pointer;stroke:none}
-.world-map__marker:hover .world-map__marker-ring,.world-map__marker:focus-visible .world-map__marker-ring{stroke-width:3.6}
+.world-map__marker:hover .world-map__marker-ring,.world-map__marker:focus-visible .world-map__marker-ring{stroke-width:1.6}
 .world-map__marker-ring{fill:none;stroke:var(--ink);stroke-width:1.6;pointer-events:none}
 .world-map__marker-dot{stroke:#fff;stroke-width:1.7;pointer-events:none}
 .world-map__marker>circle:first-child{pointer-events:all}
