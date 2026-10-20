@@ -109,7 +109,7 @@ test('Интерактивная карта: 143 реальные оценки, 
  await expect(page.locator('#map-country-name')).toHaveText('Сингапур');
  await expect(page.locator('#world-map-markers [data-country="Singapore"]')).toHaveAttribute('data-score',/^[0-9.]+$/);
  await expect(page.locator('#map-country-link')).toHaveAttribute('href',/Singapore/);
- await page.locator('#world-map-regions [data-country="Angola"]').hover();
+ await page.locator('#world-map-regions [data-geo-name="Angola"]').hover();
  await expect(page.locator('#world-map-tooltip-value')).toHaveText('Нет данных в рейтинге 2024');
 });
 test('Карта на мобильном: выбор страны без необходимости точного касания по контуру',async({page})=>{
