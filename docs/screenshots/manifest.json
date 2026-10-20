@@ -1,0 +1,168 @@
+{
+  "generatedAt": "2026-10-20T12:08:36.634Z",
+  "runner": "GitHub Actions Chromium",
+  "pages": [
+    {
+      "name": "index",
+      "url": "http://127.0.0.1:8000/",
+      "width": 320,
+      "scrollWidth": 320,
+      "httpStatus": 200,
+      "pageErrors": [],
+      "screenshot": "index-320.jpg"
+    },
+    {
+      "name": "countries",
+      "url": "http://127.0.0.1:8000/countries.html",
+      "width": 320,
+      "scrollWidth": 320,
+      "httpStatus": 200,
+      "pageErrors": [],
+      "screenshot": "countries-320.jpg"
+    },
+    {
+      "name": "country-finland",
+      "url": "http://127.0.0.1:8000/country.html?name=Finland",
+      "width": 320,
+      "scrollWidth": 320,
+      "httpStatus": 200,
+      "pageErrors": [],
+      "screenshot": "country-finland-320.jpg"
+    },
+    {
+      "name": "compare",
+      "url": "http://127.0.0.1:8000/compare.html",
+      "width": 320,
+      "scrollWidth": 320,
+      "httpStatus": 200,
+      "pageErrors": [],
+      "screenshot": "compare-320.jpg"
+    },
+    {
+      "name": "factors",
+      "url": "http://127.0.0.1:8000/factors.html",
+      "width": 320,
+      "scrollWidth": 320,
+      "httpStatus": 200,
+      "pageErrors": [],
+      "screenshot": "factors-320.jpg"
+    },
+    {
+      "name": "about",
+      "url": "http://127.0.0.1:8000/about.html",
+      "width": 320,
+      "scrollWidth": 320,
+      "httpStatus": 200,
+      "pageErrors": [],
+      "screenshot": "about-320.jpg"
+    },
+    {
+      "name": "index",
+      "url": "http://127.0.0.1:8000/",
+      "width": 768,
+      "scrollWidth": 768,
+      "httpStatus": 200,
+      "pageErrors": [],
+      "screenshot": "index-768.jpg"
+    },
+    {
+      "name": "countries",
+      "url": "http://127.0.0.1:8000/countries.html",
+      "width": 768,
+      "scrollWidth": 768,
+      "httpStatus": 200,
+      "pageErrors": [],
+      "screenshot": "countries-768.jpg"
+    },
+    {
+      "name": "country-finland",
+      "url": "http://127.0.0.1:8000/country.html?name=Finland",
+      "width": 768,
+      "scrollWidth": 768,
+      "httpStatus": 200,
+      "pageErrors": [],
+      "screenshot": "country-finland-768.jpg"
+    },
+    {
+      "name": "compare",
+      "url": "http://127.0.0.1:8000/compare.html",
+      "width": 768,
+      "scrollWidth": 768,
+      "httpStatus": 200,
+      "pageErrors": [],
+      "screenshot": "compare-768.jpg"
+    },
+    {
+      "name": "factors",
+      "url": "http://127.0.0.1:8000/factors.html",
+      "width": 768,
+      "scrollWidth": 768,
+      "httpStatus": 200,
+      "pageErrors": [],
+      "screenshot": "factors-768.jpg"
+    },
+    {
+      "name": "about",
+      "url": "http://127.0.0.1:8000/about.html",
+      "width": 768,
+      "scrollWidth": 768,
+      "httpStatus": 200,
+      "pageErrors": [],
+      "screenshot": "about-768.jpg"
+    },
+    {
+      "name": "index",
+      "url": "http://127.0.0.1:8000/",
+      "width": 1280,
+      "scrollWidth": 1280,
+      "httpStatus": 200,
+      "pageErrors": [],
+      "screenshot": "index-1280.jpg"
+    },
+    {
+      "name": "countries",
+      "url": "http://127.0.0.1:8000/countries.html",
+      "width": 1280,
+      "scrollWidth": 1280,
+      "httpStatus": 200,
+      "pageErrors": [],
+      "screenshot": "countries-1280.jpg"
+    },
+    {
+      "name": "country-finland",
+      "url": "http://127.0.0.1:8000/country.html?name=Finland",
+      "width": 1280,
+      "scrollWidth": 1280,
+      "httpStatus": 200,
+      "pageErrors": [],
+      "screenshot": "country-finland-1280.jpg"
+    },
+    {
+      "name": "compare",
+      "url": "http://127.0.0.1:8000/compare.html",
+      "width": 1280,
+      "scrollWidth": 1280,
+      "httpStatus": 200,
+      "pageErrors": [],
+      "screenshot": "compare-1280.jpg"
+    },
+    {
+      "name": "factors",
+      "url": "http://127.0.0.1:8000/factors.html",
+      "width": 1280,
+      "scrollWidth": 1280,
+      "httpStatus": 200,
+      "pageErrors": [],
+      "screenshot": "factors-1280.jpg"
+    },
+    {
+      "name": "about",
+      "url": "http://127.0.0.1:8000/about.html",
+      "width": 1280,
+      "scrollWidth": 1280,
+      "httpStatus": 200,
+      "pageErrors": [],
+      "screenshot": "about-1280.jpg"
+    }
+  ]
+}
