@@ -5,6 +5,8 @@ on:
     paths:
       - 'scripts/capture_screenshots.cjs'
       - '*.html'
+      - 'tests/validate.mjs'
+      - 'data/*.json'
       - '.github/workflows/screenshots.yml'
   workflow_dispatch:
 permissions:
