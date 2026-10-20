@@ -37,6 +37,8 @@ jobs:
           git add docs/screenshots/
           if ! git diff --staged --quiet; then
             git commit -m "Document visual appearance at mobile, tablet and desktop widths"
+            git fetch origin main
+            git rebase origin/main
             git push origin HEAD:main
           fi
       - uses: actions/upload-artifact@v4
