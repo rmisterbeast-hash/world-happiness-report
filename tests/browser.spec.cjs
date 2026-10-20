@@ -217,3 +217,23 @@ test('Крым: точное наведение показывает Украи�
  await expect(page.locator('#map-country-name')).toHaveText('Украина');
  await expect(page.locator('#map-country-link')).toHaveAttribute('href',/name=Ukraine/);
 });
+
+test('Лидер и ограниченный охват исторического года из JSON',async({page})=>{
+ await page.goto(base);
+ await expect(page.locator('#hero-leader-name')).toHaveText('Финляндия');
+ await expect(page.locator('#hero-leader-score')).toHaveText('7,741');
+ await expect(page.locator('#ranking-warning')).toBeHidden();
+ await page.locator('#year-select').selectOption('2005');
+ await expect(page.locator('#ranking-count')).toContainText('27');
+ await expect(page.locator('#ranking-warning')).toBeVisible();
+ await expect(page.locator('#ranking-warning')).toContainText('27 стран');
+ await page.locator('#year-select').selectOption('2024');
+ await expect(page.locator('#ranking-warning')).toBeHidden();
+});
+test('Источник статистики и условия использования доступны в подвале',async({page})=>{
+ for(const route of ['','countries.html','country.html?name=Finland','compare.html','factors.html','about.html']){
+  await page.goto(base+route);
+  await expect(page.locator('.site-footer')).toContainText('условия использования');
+  await expect(page.locator('.site-footer a[href*="kaggle.com"]')).not.toHaveCount(0);
+ }
+});

@@ -15,3 +15,14 @@
 @media(max-width:900px){.hero__grid,.feature,.feature--reverse{grid-template-columns:1fr}.hero__image{max-height:290px}.hero{padding-block:58px 45px}.cards-3{grid-template-columns:repeat(2,minmax(0,1fr))}.filters{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:630px){body{font-size:15px}.container{width:min(100% - 28px,1180px)}.hero h1{font-size:2.5rem}.hero__actions{flex-direction:column;align-items:stretch}.button{width:100%}.columns-2,.cards-3,.filters,.glossary{grid-template-columns:1fr}.section-heading,.cta__inner,.site-footer__inner{flex-direction:column;align-items:stretch}.chart-box{height:320px;min-height:310px;padding:12px}.factor-row{grid-template-columns:1fr 48px;gap:5px}.factor-row .factor-track{grid-column:1 / -1;grid-row:2}.page__section{padding-block:52px}.site-footer{padding-block:38px}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{transition:none!important;animation:none!important}}
+
+
+/* Audit 2026-10-20: hero leader sourced from 2024 JSON and small-year warning. */
+.hero__leader{margin-top:22px;padding:16px 20px;border:1px solid #D9D8C7;border-left:5px solid var(--green);border-radius:14px;background:rgba(255,254,250,.8);display:flex;flex-wrap:wrap;align-items:baseline;gap:5px 14px;max-width:610px}
+.hero__leader-label{flex-basis:100%;color:#656A7D;font-size:.8rem;font-weight:800}
+.hero__leader-name{font-family:Nunito,Arial,sans-serif;font-size:1.35rem;font-weight:900}
+.hero__leader-score{font-weight:600;color:var(--ink)}
+.hero__leader-score b{font-size:1.45rem;font-variant-numeric:tabular-nums}
+.hero__leader small{flex-basis:100%;color:#5A6071;font-size:.76rem}
+.ranking-warning{border-left:4px solid #B06A35;background:#FFF3DE;border-radius:8px;padding:11px 15px;color:#4D422F;font-weight:700;font-size:.9rem;margin-bottom:18px}
+.ranking-warning[hidden]{display:none}

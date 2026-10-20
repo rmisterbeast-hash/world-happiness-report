@@ -33,6 +33,12 @@ async function renderIndex(){
  const years=Object.keys(ranking.years).map(Number).sort((a,b)=>b-a);
  const select=$("#year-select");for(const y of years){const opt=make("option",null,y===2024?"2024 — опубликованный рейтинг":String(y)+" — годовые данные");opt.value=y;select.append(opt);}
  select.value="2024";
+ const leader=ranking.years["2024"]?.entries?.[0];
+ const leaderData=data.countries.find(c=>c.name===leader?.name);
+ if(leader && leaderData){
+  text("#hero-leader-name",leaderData.nameRu||leaderData.name);
+  text("#hero-leader-score",formatScore(leader.score));
+ }
  function drawRanking(){
  const r=ranking.years[select.value];if(!r)return;
  $("#ranking-top").replaceChildren();$("#ranking-bottom").replaceChildren();
@@ -41,6 +47,12 @@ async function renderIndex(){
  top.forEach(x=>$("#ranking-top").append(row(x)));
  bottom.forEach(x=>$("#ranking-bottom").append(row(x)));
  text("#ranking-count",r.label+" · Стран в наблюдении: "+r.count);
+ const alert=$("#ranking-warning");
+ const limited=r.kind==="annual-recomputed"&&r.count<50;
+ alert.hidden=!limited;
+ alert.textContent=limited
+  ?"Внимание: в "+r.year+" году доступны оценки только "+r.count+" стран. Небольшой охват делает такой пересчитанный рейтинг неполным: отсутствие страны в списке не означает низкий показатель."
+  :"";
  setStatus("ranking-status",r.kind==="published-report"?"Опубликованное значение: многолетнее среднее по отчёту 2024.":"Исторический рейтинг пересчитан по годовому показателю, не является опубликованным рейтингом WHR.");
  }
  select.addEventListener("change",drawRanking);drawRanking();
