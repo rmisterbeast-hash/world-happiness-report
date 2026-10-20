@@ -10,7 +10,11 @@ permissions:
 jobs:
   static-and-browser:
     runs-on: ubuntu-latest
-    timeout-minutes: 20
+    timeout-minutes: 25
+    strategy:
+      fail-fast: false
+      matrix:
+        browser: [chromium, firefox, webkit]
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -24,20 +28,20 @@ jobs:
           node --check tests/validate.mjs
       - name: Verify actual dataset integrity and page structure
         run: node tests/validate.mjs
-      - name: Install Playwright
+      - name: Install Playwright browser
         run: |
           npm install --no-save @playwright/test@1.56.1
-          npx playwright install --with-deps chromium
+          npx playwright install --with-deps ${{ matrix.browser }}
       - name: Start local static server
         run: |
           python3 -m http.server 8000 --bind 127.0.0.1 >/tmp/whr-http.log 2>&1 &
           sleep 2
       - name: Run browser smoke tests
-        run: npx playwright test --config=playwright.config.cjs
+        run: npx playwright test --config=playwright.config.cjs --project=${{ matrix.browser }}
       - name: Upload report on failure
         if: failure()
         uses: actions/upload-artifact@v4
         with:
-          name: playwright-test-results
+          name: playwright-results-${{ matrix.browser }}
           path: test-results/
           retention-days: 7

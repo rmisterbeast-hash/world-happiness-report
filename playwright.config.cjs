@@ -1,1 +1,10 @@
-module.exports={testDir:'./tests',testMatch:'**/*.spec.cjs',timeout:45000,expect:{timeout:12000},use:{headless:true,browserName:'chromium'},retries:1,workers:1,reporter:[['list']]};
+module.exports={
+ testDir:'./tests',testMatch:'**/*.spec.cjs',
+ timeout:45000,expect:{timeout:12000},use:{headless:true},
+ projects:[
+  {name:'chromium',use:{browserName:'chromium'}},
+  {name:'firefox',use:{browserName:'firefox'}},
+  {name:'webkit',use:{browserName:'webkit'}}
+ ],
+ retries:1,workers:1,reporter:[['list']]
+};
