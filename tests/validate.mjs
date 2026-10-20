@@ -76,3 +76,22 @@ assert.equal(matchedKeys.size,countries.length,'All 143 WHR countries can be sel
 for(const c of countries)assert.ok(matchedKeys.has(c.name),'Unmatched rating on map: '+c.name);
 assert.ok(readFileSync('index.html','utf8').includes('id="world-map-svg"'),'Map section present on homepage');
 console.log('PASS: 143 mapped WHR scores (137 borders + 6 markers), no invented scores');
+
+function svgSubpaths(path){return path.match(/M[^M]*?Z/g)||[];}
+function svgContains(subpath,x,y){
+ const nums=(subpath.match(/-?\d+(?:\.\d+)?/g)||[]).map(Number);
+ let inside=false;
+ for(let i=0,j=nums.length/2-1;i<nums.length/2;j=i++){
+  const xi=nums[2*i],yi=nums[2*i+1],xj=nums[2*j],yj=nums[2*j+1];
+  if((yi>y)!==(yj>y) && x<(xj-xi)*(y-yi)/(yj-yi)+xi)inside=!inside;
+ }
+ return inside;
+}
+const crimeaX=(34.2+180)*1000/360;
+const crimeaY=(85-45.3)*500/150;
+const russiaGeo=geoMap.features.find(f=>f.key==='Russia');
+const ukraineGeo=geoMap.features.find(f=>f.key==='Ukraine');
+assert.ok(russiaGeo && ukraineGeo,'Russia and Ukraine map layers must exist');
+assert.equal(svgSubpaths(russiaGeo.d).filter(p=>svgContains(p,crimeaX,crimeaY)).length,0,'Crimea must not be in Russia geometry');
+assert.equal(svgSubpaths(ukraineGeo.d).filter(p=>svgContains(p,crimeaX,crimeaY)).length,1,'Crimea must be inside Ukraine geometry');
+console.log('PASS: Crimean peninsula polygon belongs to Ukraine, not Russia');
