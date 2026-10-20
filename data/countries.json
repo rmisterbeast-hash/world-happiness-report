@@ -1,0 +1,2588 @@
+{
+  "meta": {
+    "source": "World Happiness Report 2024; public CSV mirrors of the assigned Kaggle dataset",
+    "kaggle": "https://www.kaggle.com/datasets/jainaru/world-happiness-report-2024-yearly-updated",
+    "reportMirror": "https://raw.githubusercontent.com/A713158/World-Happiness-Analysis/main/Dataset_World_happiness_report_2024.csv",
+    "annualMirror": "https://raw.githubusercontent.com/JLateef/Japan-Analysis/main/World-happiness-report-updated_2024.csv",
+    "note": "GitHub mirror copies have not been checksum-compared with Kaggle original. Report 2024 is a multi-year average; historical records are annual observations.",
+    "year": 2024,
+    "factorUnit": "contribution to reported life ladder score (NOT raw annual factor units)",
+    "count": 143
+  },
+  "countries": [
+    {
+      "name": "Finland",
+      "nameRu": "Финляндия",
+      "region": "Western Europe",
+      "regionRu": "Западная Европа",
+      "rank": 1,
+      "score": 7.741,
+      "confidenceLow": 7.667,
+      "confidenceHigh": 7.815,
+      "contributions": {
+        "gdp": 1.844,
+        "support": 1.572,
+        "health": 0.695,
+        "freedom": 0.859,
+        "generosity": 0.142,
+        "corruption": 0.546
+      }
+    },
+    {
+      "name": "Denmark",
+      "nameRu": "Дания",
+      "region": "Western Europe",
+      "regionRu": "Западная Европа",
+      "rank": 2,
+      "score": 7.583,
+      "confidenceLow": 7.5,
+      "confidenceHigh": 7.665,
+      "contributions": {
+        "gdp": 1.908,
+        "support": 1.52,
+        "health": 0.699,
+        "freedom": 0.823,
+        "generosity": 0.204,
+        "corruption": 0.548
+      }
+    },
+    {
+      "name": "Iceland",
+      "nameRu": "Исландия",
+      "region": "Western Europe",
+      "regionRu": "Западная Европа",
+      "rank": 3,
+      "score": 7.525,
+      "confidenceLow": 7.433,
+      "confidenceHigh": 7.618,
+      "contributions": {
+        "gdp": 1.881,
+        "support": 1.617,
+        "health": 0.718,
+        "freedom": 0.819,
+        "generosity": 0.258,
+        "corruption": 0.182
+      }
+    },
+    {
+      "name": "Sweden",
+      "nameRu": "Швеция",
+      "region": "Western Europe",
+      "regionRu": "Западная Европа",
+      "rank": 4,
+      "score": 7.344,
+      "confidenceLow": 7.267,
+      "confidenceHigh": 7.422,
+      "contributions": {
+        "gdp": 1.878,
+        "support": 1.501,
+        "health": 0.724,
+        "freedom": 0.838,
+        "generosity": 0.221,
+        "corruption": 0.524
+      }
+    },
+    {
+      "name": "Israel",
+      "nameRu": "Израиль",
+      "region": "Middle East and North Africa",
+      "regionRu": "Ближний Восток и Северная Африка",
+      "rank": 5,
+      "score": 7.341,
+      "confidenceLow": 7.277,
+      "confidenceHigh": 7.405,
+      "contributions": {
+        "gdp": 1.803,
+        "support": 1.513,
+        "health": 0.74,
+        "freedom": 0.641,
+        "generosity": 0.153,
+        "corruption": 0.193
+      }
+    },
+    {
+      "name": "Netherlands",
+      "nameRu": "Нидерланды",
+      "region": "Western Europe",
+      "regionRu": "Западная Европа",
+      "rank": 6,
+      "score": 7.319,
+      "confidenceLow": 7.256,
+      "confidenceHigh": 7.383,
+      "contributions": {
+        "gdp": 1.901,
+        "support": 1.462,
+        "health": 0.706,
+        "freedom": 0.725,
+        "generosity": 0.247,
+        "corruption": 0.372
+      }
+    },
+    {
+      "name": "Norway",
+      "nameRu": "Норвегия",
+      "region": "Western Europe",
+      "regionRu": "Западная Европа",
+      "rank": 7,
+      "score": 7.302,
+      "confidenceLow": 7.215,
+      "confidenceHigh": 7.389,
+      "contributions": {
+        "gdp": 1.952,
+        "support": 1.517,
+        "health": 0.704,
+        "freedom": 0.835,
+        "generosity": 0.224,
+        "corruption": 0.484
+      }
+    },
+    {
+      "name": "Luxembourg",
+      "nameRu": "Люксембург",
+      "region": "Western Europe",
+      "regionRu": "Западная Европа",
+      "rank": 8,
+      "score": 7.122,
+      "confidenceLow": 7.031,
+      "confidenceHigh": 7.213,
+      "contributions": {
+        "gdp": 2.141,
+        "support": 1.355,
+        "health": 0.708,
+        "freedom": 0.801,
+        "generosity": 0.146,
+        "corruption": 0.432
+      }
+    },
+    {
+      "name": "Switzerland",
+      "nameRu": "Швейцария",
+      "region": "Western Europe",
+      "regionRu": "Западная Европа",
+      "rank": 9,
+      "score": 7.06,
+      "confidenceLow": 6.973,
+      "confidenceHigh": 7.147,
+      "contributions": {
+        "gdp": 1.97,
+        "support": 1.425,
+        "health": 0.747,
+        "freedom": 0.759,
+        "generosity": 0.173,
+        "corruption": 0.498
+      }
+    },
+    {
+      "name": "Australia",
+      "nameRu": "Австралия",
+      "region": "North America and ANZ",
+      "regionRu": "Северная Америка, Австралия и Новая Зеландия",
+      "rank": 10,
+      "score": 7.057,
+      "confidenceLow": 6.973,
+      "confidenceHigh": 7.141,
+      "contributions": {
+        "gdp": 1.854,
+        "support": 1.461,
+        "health": 0.692,
+        "freedom": 0.756,
+        "generosity": 0.225,
+        "corruption": 0.323
+      }
+    },
+    {
+      "name": "New Zealand",
+      "nameRu": "Новая Зеландия",
+      "region": "North America and ANZ",
+      "regionRu": "Северная Америка, Австралия и Новая Зеландия",
+      "rank": 11,
+      "score": 7.029,
+      "confidenceLow": 6.954,
+      "confidenceHigh": 7.105,
+      "contributions": {
+        "gdp": 1.81,
+        "support": 1.527,
+        "health": 0.673,
+        "freedom": 0.746,
+        "generosity": 0.226,
+        "corruption": 0.48
+      }
+    },
+    {
+      "name": "Costa Rica",
+      "nameRu": "Коста-Рика",
+      "region": "Latin America and Caribbean",
+      "regionRu": "Латинская Америка и Карибы",
+      "rank": 12,
+      "score": 6.955,
+      "confidenceLow": 6.86,
+      "confidenceHigh": 7.051,
+      "contributions": {
+        "gdp": 1.561,
+        "support": 1.373,
+        "health": 0.661,
+        "freedom": 0.797,
+        "generosity": 0.109,
+        "corruption": 0.123
+      }
+    },
+    {
+      "name": "Kuwait",
+      "nameRu": "Кувейт",
+      "region": "Middle East and North Africa",
+      "regionRu": "Ближний Восток и Северная Африка",
+      "rank": 13,
+      "score": 6.951,
+      "confidenceLow": 6.843,
+      "confidenceHigh": 7.06,
+      "contributions": {
+        "gdp": 1.845,
+        "support": 1.364,
+        "health": 0.661,
+        "freedom": 0.827,
+        "generosity": 0.2,
+        "corruption": 0.172
+      }
+    },
+    {
+      "name": "Austria",
+      "nameRu": "Австрия",
+      "region": "Western Europe",
+      "regionRu": "Западная Европа",
+      "rank": 14,
+      "score": 6.905,
+      "confidenceLow": 6.824,
+      "confidenceHigh": 6.986,
+      "contributions": {
+        "gdp": 1.885,
+        "support": 1.336,
+        "health": 0.696,
+        "freedom": 0.703,
+        "generosity": 0.214,
+        "corruption": 0.305
+      }
+    },
+    {
+      "name": "Canada",
+      "nameRu": "Канада",
+      "region": "North America and ANZ",
+      "regionRu": "Северная Америка, Австралия и Новая Зеландия",
+      "rank": 15,
+      "score": 6.9,
+      "confidenceLow": 6.815,
+      "confidenceHigh": 6.984,
+      "contributions": {
+        "gdp": 1.84,
+        "support": 1.459,
+        "health": 0.701,
+        "freedom": 0.73,
+        "generosity": 0.23,
+        "corruption": 0.368
+      }
+    },
+    {
+      "name": "Belgium",
+      "nameRu": "Бельгия",
+      "region": "Western Europe",
+      "regionRu": "Западная Европа",
+      "rank": 16,
+      "score": 6.894,
+      "confidenceLow": 6.827,
+      "confidenceHigh": 6.961,
+      "contributions": {
+        "gdp": 1.868,
+        "support": 1.44,
+        "health": 0.69,
+        "freedom": 0.729,
+        "generosity": 0.17,
+        "corruption": 0.311
+      }
+    },
+    {
+      "name": "Ireland",
+      "nameRu": "Ирландия",
+      "region": "Western Europe",
+      "regionRu": "Западная Европа",
+      "rank": 17,
+      "score": 6.838,
+      "confidenceLow": 6.749,
+      "confidenceHigh": 6.927,
+      "contributions": {
+        "gdp": 2.129,
+        "support": 1.39,
+        "health": 0.7,
+        "freedom": 0.758,
+        "generosity": 0.205,
+        "corruption": 0.418
+      }
+    },
+    {
+      "name": "Czechia",
+      "nameRu": "Чехия",
+      "region": "Central and Eastern Europe",
+      "regionRu": "Центральная и Восточная Европа",
+      "rank": 18,
+      "score": 6.822,
+      "confidenceLow": 6.741,
+      "confidenceHigh": 6.903,
+      "contributions": {
+        "gdp": 1.783,
+        "support": 1.511,
+        "health": 0.638,
+        "freedom": 0.787,
+        "generosity": 0.177,
+        "corruption": 0.068
+      }
+    },
+    {
+      "name": "Lithuania",
+      "nameRu": "Литва",
+      "region": "Central and Eastern Europe",
+      "regionRu": "Центральная и Восточная Европа",
+      "rank": 19,
+      "score": 6.818,
+      "confidenceLow": 6.739,
+      "confidenceHigh": 6.896,
+      "contributions": {
+        "gdp": 1.766,
+        "support": 1.454,
+        "health": 0.598,
+        "freedom": 0.533,
+        "generosity": 0.044,
+        "corruption": 0.116
+      }
+    },
+    {
+      "name": "United Kingdom",
+      "nameRu": "Великобритания",
+      "region": "Western Europe",
+      "regionRu": "Западная Европа",
+      "rank": 20,
+      "score": 6.749,
+      "confidenceLow": 6.665,
+      "confidenceHigh": 6.833,
+      "contributions": {
+        "gdp": 1.822,
+        "support": 1.326,
+        "health": 0.672,
+        "freedom": 0.713,
+        "generosity": 0.267,
+        "corruption": 0.351
+      }
+    },
+    {
+      "name": "Slovenia",
+      "nameRu": "Словения",
+      "region": "Central and Eastern Europe",
+      "regionRu": "Центральная и Восточная Европа",
+      "rank": 21,
+      "score": 6.743,
+      "confidenceLow": 6.643,
+      "confidenceHigh": 6.843,
+      "contributions": {
+        "gdp": 1.786,
+        "support": 1.502,
+        "health": 0.695,
+        "freedom": 0.789,
+        "generosity": 0.157,
+        "corruption": 0.131
+      }
+    },
+    {
+      "name": "United Arab Emirates",
+      "nameRu": "Объединённые Арабские Эмираты",
+      "region": "Middle East and North Africa",
+      "regionRu": "Ближний Восток и Северная Африка",
+      "rank": 22,
+      "score": 6.733,
+      "confidenceLow": 6.643,
+      "confidenceHigh": 6.823,
+      "contributions": {
+        "gdp": 1.983,
+        "support": 1.164,
+        "health": 0.563,
+        "freedom": 0.815,
+        "generosity": 0.209,
+        "corruption": 0.258
+      }
+    },
+    {
+      "name": "United States",
+      "nameRu": "США",
+      "region": "North America and ANZ",
+      "regionRu": "Северная Америка, Австралия и Новая Зеландия",
+      "rank": 23,
+      "score": 6.725,
+      "confidenceLow": 6.631,
+      "confidenceHigh": 6.818,
+      "contributions": {
+        "gdp": 1.939,
+        "support": 1.392,
+        "health": 0.542,
+        "freedom": 0.586,
+        "generosity": 0.223,
+        "corruption": 0.169
+      }
+    },
+    {
+      "name": "Germany",
+      "nameRu": "Германия",
+      "region": "Western Europe",
+      "regionRu": "Западная Европа",
+      "rank": 24,
+      "score": 6.719,
+      "confidenceLow": 6.622,
+      "confidenceHigh": 6.815,
+      "contributions": {
+        "gdp": 1.871,
+        "support": 1.39,
+        "health": 0.702,
+        "freedom": 0.7,
+        "generosity": 0.174,
+        "corruption": 0.368
+      }
+    },
+    {
+      "name": "Mexico",
+      "nameRu": "Мексика",
+      "region": "Latin America and Caribbean",
+      "regionRu": "Латинская Америка и Карибы",
+      "rank": 25,
+      "score": 6.678,
+      "confidenceLow": 6.575,
+      "confidenceHigh": 6.781,
+      "contributions": {
+        "gdp": 1.521,
+        "support": 1.241,
+        "health": 0.544,
+        "freedom": 0.722,
+        "generosity": 0.086,
+        "corruption": 0.127
+      }
+    },
+    {
+      "name": "Uruguay",
+      "nameRu": "Уругвай",
+      "region": "Latin America and Caribbean",
+      "regionRu": "Латинская Америка и Карибы",
+      "rank": 26,
+      "score": 6.611,
+      "confidenceLow": 6.527,
+      "confidenceHigh": 6.696,
+      "contributions": {
+        "gdp": 1.596,
+        "support": 1.431,
+        "health": 0.592,
+        "freedom": 0.775,
+        "generosity": 0.106,
+        "corruption": 0.22
+      }
+    },
+    {
+      "name": "France",
+      "nameRu": "Франция",
+      "region": "Western Europe",
+      "regionRu": "Западная Европа",
+      "rank": 27,
+      "score": 6.609,
+      "confidenceLow": 6.533,
+      "confidenceHigh": 6.685,
+      "contributions": {
+        "gdp": 1.818,
+        "support": 1.348,
+        "health": 0.727,
+        "freedom": 0.65,
+        "generosity": 0.112,
+        "corruption": 0.281
+      }
+    },
+    {
+      "name": "Saudi Arabia",
+      "nameRu": "Саудовская Аравия",
+      "region": "Middle East and North Africa",
+      "regionRu": "Ближний Восток и Северная Африка",
+      "rank": 28,
+      "score": 6.594,
+      "confidenceLow": 6.48,
+      "confidenceHigh": 6.707,
+      "contributions": {
+        "gdp": 1.842,
+        "support": 1.361,
+        "health": 0.511,
+        "freedom": 0.787,
+        "generosity": 0.114,
+        "corruption": 0.188
+      }
+    },
+    {
+      "name": "Kosovo",
+      "nameRu": "Косово",
+      "region": "Central and Eastern Europe",
+      "regionRu": "Центральная и Восточная Европа",
+      "rank": 29,
+      "score": 6.561,
+      "confidenceLow": 6.455,
+      "confidenceHigh": 6.667,
+      "contributions": {
+        "gdp": 1.364,
+        "support": 1.277,
+        "health": 0.599,
+        "freedom": 0.739,
+        "generosity": 0.254,
+        "corruption": 0.073
+      }
+    },
+    {
+      "name": "Singapore",
+      "nameRu": "Сингапур",
+      "region": "Southeast Asia",
+      "regionRu": "Юго-Восточная Азия",
+      "rank": 30,
+      "score": 6.523,
+      "confidenceLow": 6.44,
+      "confidenceHigh": 6.605,
+      "contributions": {
+        "gdp": 2.118,
+        "support": 1.361,
+        "health": 0.769,
+        "freedom": 0.743,
+        "generosity": 0.168,
+        "corruption": 0.575
+      }
+    },
+    {
+      "name": "Taiwan Province of China",
+      "nameRu": "Тайвань (Китай)",
+      "region": "East Asia",
+      "regionRu": "Восточная Азия",
+      "rank": 31,
+      "score": 6.503,
+      "confidenceLow": 6.41,
+      "confidenceHigh": 6.597,
+      "contributions": {
+        "gdp": 1.842,
+        "support": 1.346,
+        "health": 0.65,
+        "freedom": 0.649,
+        "generosity": 0.068,
+        "corruption": 0.202
+      }
+    },
+    {
+      "name": "Romania",
+      "nameRu": "Румыния",
+      "region": "Central and Eastern Europe",
+      "regionRu": "Центральная и Восточная Европа",
+      "rank": 32,
+      "score": 6.491,
+      "confidenceLow": 6.39,
+      "confidenceHigh": 6.592,
+      "contributions": {
+        "gdp": 1.699,
+        "support": 1.236,
+        "health": 0.583,
+        "freedom": 0.717,
+        "generosity": 0.041,
+        "corruption": 0.006
+      }
+    },
+    {
+      "name": "El Salvador",
+      "nameRu": "Сальвадор",
+      "region": "Latin America and Caribbean",
+      "regionRu": "Латинская Америка и Карибы",
+      "rank": 33,
+      "score": 6.469,
+      "confidenceLow": 6.338,
+      "confidenceHigh": 6.599,
+      "contributions": {
+        "gdp": 1.265,
+        "support": 1.08,
+        "health": 0.549,
+        "freedom": 0.816,
+        "generosity": 0.083,
+        "corruption": 0.253
+      }
+    },
+    {
+      "name": "Estonia",
+      "nameRu": "Эстония",
+      "region": "Central and Eastern Europe",
+      "regionRu": "Центральная и Восточная Европа",
+      "rank": 34,
+      "score": 6.448,
+      "confidenceLow": 6.371,
+      "confidenceHigh": 6.524,
+      "contributions": {
+        "gdp": 1.752,
+        "support": 1.527,
+        "health": 0.657,
+        "freedom": 0.805,
+        "generosity": 0.166,
+        "corruption": 0.401
+      }
+    },
+    {
+      "name": "Poland",
+      "nameRu": "Польша",
+      "region": "Central and Eastern Europe",
+      "regionRu": "Центральная и Восточная Европа",
+      "rank": 35,
+      "score": 6.442,
+      "confidenceLow": 6.37,
+      "confidenceHigh": 6.513,
+      "contributions": {
+        "gdp": 1.738,
+        "support": 1.417,
+        "health": 0.639,
+        "freedom": 0.6,
+        "generosity": 0.081,
+        "corruption": 0.175
+      }
+    },
+    {
+      "name": "Spain",
+      "nameRu": "Испания",
+      "region": "Western Europe",
+      "regionRu": "Западная Европа",
+      "rank": 36,
+      "score": 6.421,
+      "confidenceLow": 6.339,
+      "confidenceHigh": 6.502,
+      "contributions": {
+        "gdp": 1.766,
+        "support": 1.471,
+        "health": 0.729,
+        "freedom": 0.619,
+        "generosity": 0.119,
+        "corruption": 0.177
+      }
+    },
+    {
+      "name": "Serbia",
+      "nameRu": "Сербия",
+      "region": "Central and Eastern Europe",
+      "regionRu": "Центральная и Восточная Европа",
+      "rank": 37,
+      "score": 6.411,
+      "confidenceLow": 6.3,
+      "confidenceHigh": 6.522,
+      "contributions": {
+        "gdp": 1.538,
+        "support": 1.391,
+        "health": 0.585,
+        "freedom": 0.663,
+        "generosity": 0.2,
+        "corruption": 0.101
+      }
+    },
+    {
+      "name": "Chile",
+      "nameRu": "Чили",
+      "region": "Latin America and Caribbean",
+      "regionRu": "Латинская Америка и Карибы",
+      "rank": 38,
+      "score": 6.36,
+      "confidenceLow": 6.273,
+      "confidenceHigh": 6.448,
+      "contributions": {
+        "gdp": 1.616,
+        "support": 1.369,
+        "health": 0.673,
+        "freedom": 0.651,
+        "generosity": 0.117,
+        "corruption": 0.075
+      }
+    },
+    {
+      "name": "Panama",
+      "nameRu": "Панама",
+      "region": "Latin America and Caribbean",
+      "regionRu": "Латинская Америка и Карибы",
+      "rank": 39,
+      "score": 6.358,
+      "confidenceLow": 6.227,
+      "confidenceHigh": 6.489,
+      "contributions": {
+        "gdp": 1.702,
+        "support": 1.392,
+        "health": 0.633,
+        "freedom": 0.72,
+        "generosity": 0.063,
+        "corruption": 0.043
+      }
+    },
+    {
+      "name": "Malta",
+      "nameRu": "Мальта",
+      "region": "Western Europe",
+      "regionRu": "Западная Европа",
+      "rank": 40,
+      "score": 6.346,
+      "confidenceLow": 6.261,
+      "confidenceHigh": 6.43,
+      "contributions": {
+        "gdp": 1.827,
+        "support": 1.444,
+        "health": 0.707,
+        "freedom": 0.727,
+        "generosity": 0.25,
+        "corruption": 0.125
+      }
+    },
+    {
+      "name": "Italy",
+      "nameRu": "Италия",
+      "region": "Western Europe",
+      "regionRu": "Западная Европа",
+      "rank": 41,
+      "score": 6.324,
+      "confidenceLow": 6.211,
+      "confidenceHigh": 6.436,
+      "contributions": {
+        "gdp": 1.8,
+        "support": 1.328,
+        "health": 0.72,
+        "freedom": 0.513,
+        "generosity": 0.112,
+        "corruption": 0.074
+      }
+    },
+    {
+      "name": "Guatemala",
+      "nameRu": "Гватемала",
+      "region": "Latin America and Caribbean",
+      "regionRu": "Латинская Америка и Карибы",
+      "rank": 42,
+      "score": 6.287,
+      "confidenceLow": 6.117,
+      "confidenceHigh": 6.457,
+      "contributions": {
+        "gdp": 1.26,
+        "support": 1.169,
+        "health": 0.467,
+        "freedom": 0.735,
+        "generosity": 0.105,
+        "corruption": 0.078
+      }
+    },
+    {
+      "name": "Nicaragua",
+      "nameRu": "Никарагуа",
+      "region": "Latin America and Caribbean",
+      "regionRu": "Латинская Америка и Карибы",
+      "rank": 43,
+      "score": 6.284,
+      "confidenceLow": 6.135,
+      "confidenceHigh": 6.433,
+      "contributions": {
+        "gdp": 1.097,
+        "support": 1.263,
+        "health": 0.542,
+        "freedom": 0.793,
+        "generosity": 0.133,
+        "corruption": 0.251
+      }
+    },
+    {
+      "name": "Brazil",
+      "nameRu": "Бразилия",
+      "region": "Latin America and Caribbean",
+      "regionRu": "Латинская Америка и Карибы",
+      "rank": 44,
+      "score": 6.272,
+      "confidenceLow": 6.154,
+      "confidenceHigh": 6.39,
+      "contributions": {
+        "gdp": 1.43,
+        "support": 1.269,
+        "health": 0.548,
+        "freedom": 0.685,
+        "generosity": 0.13,
+        "corruption": 0.142
+      }
+    },
+    {
+      "name": "Slovakia",
+      "nameRu": "Словакия",
+      "region": "Central and Eastern Europe",
+      "regionRu": "Центральная и Восточная Европа",
+      "rank": 45,
+      "score": 6.257,
+      "confidenceLow": 6.182,
+      "confidenceHigh": 6.332,
+      "contributions": {
+        "gdp": 1.706,
+        "support": 1.54,
+        "health": 0.638,
+        "freedom": 0.566,
+        "generosity": 0.096,
+        "corruption": 0.058
+      }
+    },
+    {
+      "name": "Latvia",
+      "nameRu": "Латвия",
+      "region": "Central and Eastern Europe",
+      "regionRu": "Центральная и Восточная Европа",
+      "rank": 46,
+      "score": 6.234,
+      "confidenceLow": 6.155,
+      "confidenceHigh": 6.314,
+      "contributions": {
+        "gdp": 1.7,
+        "support": 1.508,
+        "health": 0.564,
+        "freedom": 0.666,
+        "generosity": 0.127,
+        "corruption": 0.078
+      }
+    },
+    {
+      "name": "Uzbekistan",
+      "nameRu": "Узбекистан",
+      "region": "Commonwealth of Independent States",
+      "regionRu": "СНГ",
+      "rank": 47,
+      "score": 6.195,
+      "confidenceLow": 6.087,
+      "confidenceHigh": 6.303,
+      "contributions": {
+        "gdp": 1.212,
+        "support": 1.394,
+        "health": 0.539,
+        "freedom": 0.835,
+        "generosity": 0.251,
+        "corruption": 0.215
+      }
+    },
+    {
+      "name": "Argentina",
+      "nameRu": "Аргентина",
+      "region": "Latin America and Caribbean",
+      "regionRu": "Латинская Америка и Карибы",
+      "rank": 48,
+      "score": 6.188,
+      "confidenceLow": 6.07,
+      "confidenceHigh": 6.306,
+      "contributions": {
+        "gdp": 1.562,
+        "support": 1.381,
+        "health": 0.585,
+        "freedom": 0.681,
+        "generosity": 0.087,
+        "corruption": 0.08
+      }
+    },
+    {
+      "name": "Kazakhstan",
+      "nameRu": "Казахстан",
+      "region": "Commonwealth of Independent States",
+      "regionRu": "СНГ",
+      "rank": 49,
+      "score": 6.188,
+      "confidenceLow": 6.097,
+      "confidenceHigh": 6.278,
+      "contributions": {
+        "gdp": 1.622,
+        "support": 1.457,
+        "health": 0.556,
+        "freedom": 0.733,
+        "generosity": 0.149,
+        "corruption": 0.12
+      }
+    },
+    {
+      "name": "Cyprus",
+      "nameRu": "Кипр",
+      "region": "Western Europe",
+      "regionRu": "Западная Европа",
+      "rank": 50,
+      "score": 6.068,
+      "confidenceLow": 5.954,
+      "confidenceHigh": 6.182,
+      "contributions": {
+        "gdp": 1.794,
+        "support": 1.217,
+        "health": 0.744,
+        "freedom": 0.529,
+        "generosity": 0.124,
+        "corruption": 0.049
+      }
+    },
+    {
+      "name": "Japan",
+      "nameRu": "Япония",
+      "region": "East Asia",
+      "regionRu": "Восточная Азия",
+      "rank": 51,
+      "score": 6.06,
+      "confidenceLow": 5.976,
+      "confidenceHigh": 6.144,
+      "contributions": {
+        "gdp": 1.786,
+        "support": 1.354,
+        "health": 0.785,
+        "freedom": 0.632,
+        "generosity": 0.023,
+        "corruption": 0.219
+      }
+    },
+    {
+      "name": "South Korea",
+      "nameRu": "Южная Корея",
+      "region": "East Asia",
+      "regionRu": "Восточная Азия",
+      "rank": 52,
+      "score": 6.058,
+      "confidenceLow": 5.968,
+      "confidenceHigh": 6.148,
+      "contributions": {
+        "gdp": 1.815,
+        "support": 1.178,
+        "health": 0.77,
+        "freedom": 0.555,
+        "generosity": 0.126,
+        "corruption": 0.158
+      }
+    },
+    {
+      "name": "Philippines",
+      "nameRu": "Филиппины",
+      "region": "Southeast Asia",
+      "regionRu": "Юго-Восточная Азия",
+      "rank": 53,
+      "score": 6.048,
+      "confidenceLow": 5.929,
+      "confidenceHigh": 6.166,
+      "contributions": {
+        "gdp": 1.232,
+        "support": 1.146,
+        "health": 0.441,
+        "freedom": 0.826,
+        "generosity": 0.099,
+        "corruption": 0.136
+      }
+    },
+    {
+      "name": "Vietnam",
+      "nameRu": "Вьетнам",
+      "region": "Southeast Asia",
+      "regionRu": "Юго-Восточная Азия",
+      "rank": 54,
+      "score": 6.043,
+      "confidenceLow": 5.948,
+      "confidenceHigh": 6.138,
+      "contributions": {
+        "gdp": 1.331,
+        "support": 1.267,
+        "health": 0.539,
+        "freedom": 0.843,
+        "generosity": 0.094,
+        "corruption": 0.16
+      }
+    },
+    {
+      "name": "Portugal",
+      "nameRu": "Португалия",
+      "region": "Western Europe",
+      "regionRu": "Западная Европа",
+      "rank": 55,
+      "score": 6.03,
+      "confidenceLow": 5.925,
+      "confidenceHigh": 6.134,
+      "contributions": {
+        "gdp": 1.728,
+        "support": 1.368,
+        "health": 0.699,
+        "freedom": 0.757,
+        "generosity": 0.047,
+        "corruption": 0.035
+      }
+    },
+    {
+      "name": "Hungary",
+      "nameRu": "Венгрия",
+      "region": "Central and Eastern Europe",
+      "regionRu": "Центральная и Восточная Европа",
+      "rank": 56,
+      "score": 6.017,
+      "confidenceLow": 5.91,
+      "confidenceHigh": 6.124,
+      "contributions": {
+        "gdp": 1.722,
+        "support": 1.528,
+        "health": 0.596,
+        "freedom": 0.581,
+        "generosity": 0.123,
+        "corruption": 0.067
+      }
+    },
+    {
+      "name": "Paraguay",
+      "nameRu": "Парагвай",
+      "region": "Latin America and Caribbean",
+      "regionRu": "Латинская Америка и Карибы",
+      "rank": 57,
+      "score": 5.977,
+      "confidenceLow": 5.868,
+      "confidenceHigh": 6.085,
+      "contributions": {
+        "gdp": 1.398,
+        "support": 1.408,
+        "health": 0.549,
+        "freedom": 0.788,
+        "generosity": 0.131,
+        "corruption": 0.065
+      }
+    },
+    {
+      "name": "Thailand",
+      "nameRu": "Таиланд",
+      "region": "Southeast Asia",
+      "regionRu": "Юго-Восточная Азия",
+      "rank": 58,
+      "score": 5.976,
+      "confidenceLow": 5.858,
+      "confidenceHigh": 6.094,
+      "contributions": {
+        "gdp": 1.484,
+        "support": 1.347,
+        "health": 0.62,
+        "freedom": 0.756,
+        "generosity": 0.283,
+        "corruption": 0.024
+      }
+    },
+    {
+      "name": "Malaysia",
+      "nameRu": "Малайзия",
+      "region": "Southeast Asia",
+      "regionRu": "Юго-Восточная Азия",
+      "rank": 59,
+      "score": 5.975,
+      "confidenceLow": 5.872,
+      "confidenceHigh": 6.078,
+      "contributions": {
+        "gdp": 1.646,
+        "support": 1.143,
+        "health": 0.54,
+        "freedom": 0.829,
+        "generosity": 0.226,
+        "corruption": 0.119
+      }
+    },
+    {
+      "name": "China",
+      "nameRu": "Китай",
+      "region": "East Asia",
+      "regionRu": "Восточная Азия",
+      "rank": 60,
+      "score": 5.973,
+      "confidenceLow": 5.885,
+      "confidenceHigh": 6.061,
+      "contributions": {
+        "gdp": 1.497,
+        "support": 1.239,
+        "health": 0.629,
+        "freedom": 0.704,
+        "generosity": 0.132,
+        "corruption": 0.164
+      }
+    },
+    {
+      "name": "Honduras",
+      "nameRu": "Гондурас",
+      "region": "Latin America and Caribbean",
+      "regionRu": "Латинская Америка и Карибы",
+      "rank": 61,
+      "score": 5.968,
+      "confidenceLow": 5.822,
+      "confidenceHigh": 6.114,
+      "contributions": {
+        "gdp": 1.091,
+        "support": 1.035,
+        "health": 0.502,
+        "freedom": 0.72,
+        "generosity": 0.175,
+        "corruption": 0.081
+      }
+    },
+    {
+      "name": "Bahrain",
+      "nameRu": "Бахрейн",
+      "region": "Middle East and North Africa",
+      "regionRu": "Ближний Восток и Северная Африка",
+      "rank": 62,
+      "score": 5.959,
+      "confidenceLow": 5.766,
+      "confidenceHigh": 6.153,
+      "contributions": {
+        "gdp": null,
+        "support": null,
+        "health": null,
+        "freedom": null,
+        "generosity": null,
+        "corruption": null
+      }
+    },
+    {
+      "name": "Croatia",
+      "nameRu": "Хорватия",
+      "region": "Central and Eastern Europe",
+      "regionRu": "Центральная и Восточная Европа",
+      "rank": 63,
+      "score": 5.942,
+      "confidenceLow": 5.837,
+      "confidenceHigh": 6.047,
+      "contributions": {
+        "gdp": 1.71,
+        "support": 1.445,
+        "health": 0.637,
+        "freedom": 0.469,
+        "generosity": 0.064,
+        "corruption": 0.043
+      }
+    },
+    {
+      "name": "Greece",
+      "nameRu": "Греция",
+      "region": "Western Europe",
+      "regionRu": "Западная Европа",
+      "rank": 64,
+      "score": 5.934,
+      "confidenceLow": 5.84,
+      "confidenceHigh": 6.027,
+      "contributions": {
+        "gdp": 1.684,
+        "support": 1.276,
+        "health": 0.696,
+        "freedom": 0.337,
+        "generosity": 0.018,
+        "corruption": 0.093
+      }
+    },
+    {
+      "name": "Bosnia and Herzegovina",
+      "nameRu": "Босния и Герцеговина",
+      "region": "Central and Eastern Europe",
+      "regionRu": "Центральная и Восточная Европа",
+      "rank": 65,
+      "score": 5.877,
+      "confidenceLow": 5.775,
+      "confidenceHigh": 5.979,
+      "contributions": {
+        "gdp": 1.465,
+        "support": 1.318,
+        "health": 0.587,
+        "freedom": 0.621,
+        "generosity": 0.246,
+        "corruption": 0
+      }
+    },
+    {
+      "name": "Libya",
+      "nameRu": "Ливия",
+      "region": "Middle East and North Africa",
+      "regionRu": "Ближний Восток и Северная Африка",
+      "rank": 66,
+      "score": 5.866,
+      "confidenceLow": 5.746,
+      "confidenceHigh": 5.987,
+      "contributions": {
+        "gdp": 1.526,
+        "support": 1.1,
+        "health": 0.55,
+        "freedom": 0.592,
+        "generosity": 0.111,
+        "corruption": 0.204
+      }
+    },
+    {
+      "name": "Jamaica",
+      "nameRu": "Ямайка",
+      "region": "Latin America and Caribbean",
+      "regionRu": "Латинская Америка и Карибы",
+      "rank": 67,
+      "score": 5.842,
+      "confidenceLow": 5.624,
+      "confidenceHigh": 6.059,
+      "contributions": {
+        "gdp": 1.28,
+        "support": 1.324,
+        "health": 0.567,
+        "freedom": 0.647,
+        "generosity": 0.089,
+        "corruption": 0.028
+      }
+    },
+    {
+      "name": "Peru",
+      "nameRu": "Перу",
+      "region": "Latin America and Caribbean",
+      "regionRu": "Латинская Америка и Карибы",
+      "rank": 68,
+      "score": 5.841,
+      "confidenceLow": 5.736,
+      "confidenceHigh": 5.946,
+      "contributions": {
+        "gdp": 1.371,
+        "support": 1.18,
+        "health": 0.662,
+        "freedom": 0.615,
+        "generosity": 0.078,
+        "corruption": 0.029
+      }
+    },
+    {
+      "name": "Dominican Republic",
+      "nameRu": "Доминиканская Республика",
+      "region": "Latin America and Caribbean",
+      "regionRu": "Латинская Америка и Карибы",
+      "rank": 69,
+      "score": 5.823,
+      "confidenceLow": 5.679,
+      "confidenceHigh": 5.967,
+      "contributions": {
+        "gdp": 1.517,
+        "support": 1.272,
+        "health": 0.511,
+        "freedom": 0.73,
+        "generosity": 0.086,
+        "corruption": 0.196
+      }
+    },
+    {
+      "name": "Mauritius",
+      "nameRu": "Маврикий",
+      "region": "Sub-Saharan Africa",
+      "regionRu": "Африка к югу от Сахары",
+      "rank": 70,
+      "score": 5.816,
+      "confidenceLow": 5.706,
+      "confidenceHigh": 5.927,
+      "contributions": {
+        "gdp": 1.57,
+        "support": 1.358,
+        "health": 0.49,
+        "freedom": 0.641,
+        "generosity": 0.123,
+        "corruption": 0.118
+      }
+    },
+    {
+      "name": "Moldova",
+      "nameRu": "Молдова",
+      "region": "Commonwealth of Independent States",
+      "regionRu": "СНГ",
+      "rank": 71,
+      "score": 5.816,
+      "confidenceLow": 5.702,
+      "confidenceHigh": 5.93,
+      "contributions": {
+        "gdp": 1.385,
+        "support": 1.277,
+        "health": 0.542,
+        "freedom": 0.695,
+        "generosity": 0.077,
+        "corruption": 0.044
+      }
+    },
+    {
+      "name": "Russia",
+      "nameRu": "Россия",
+      "region": "Commonwealth of Independent States",
+      "regionRu": "СНГ",
+      "rank": 72,
+      "score": 5.785,
+      "confidenceLow": 5.712,
+      "confidenceHigh": 5.859,
+      "contributions": {
+        "gdp": 1.642,
+        "support": 1.351,
+        "health": 0.531,
+        "freedom": 0.551,
+        "generosity": 0.138,
+        "corruption": 0.121
+      }
+    },
+    {
+      "name": "Bolivia",
+      "nameRu": "Боливия",
+      "region": "Latin America and Caribbean",
+      "regionRu": "Латинская Америка и Карибы",
+      "rank": 73,
+      "score": 5.784,
+      "confidenceLow": 5.674,
+      "confidenceHigh": 5.895,
+      "contributions": {
+        "gdp": 1.217,
+        "support": 1.179,
+        "health": 0.488,
+        "freedom": 0.719,
+        "generosity": 0.1,
+        "corruption": 0.061
+      }
+    },
+    {
+      "name": "Ecuador",
+      "nameRu": "Эквадор",
+      "region": "Latin America and Caribbean",
+      "regionRu": "Латинская Америка и Карибы",
+      "rank": 74,
+      "score": 5.725,
+      "confidenceLow": 5.599,
+      "confidenceHigh": 5.85,
+      "contributions": {
+        "gdp": 1.315,
+        "support": 1.151,
+        "health": 0.64,
+        "freedom": 0.606,
+        "generosity": 0.087,
+        "corruption": 0.078
+      }
+    },
+    {
+      "name": "Kyrgyzstan",
+      "nameRu": "Кыргызстан",
+      "region": "Commonwealth of Independent States",
+      "regionRu": "СНГ",
+      "rank": 75,
+      "score": 5.714,
+      "confidenceLow": 5.632,
+      "confidenceHigh": 5.795,
+      "contributions": {
+        "gdp": 1.054,
+        "support": 1.477,
+        "health": 0.588,
+        "freedom": 0.834,
+        "generosity": 0.225,
+        "corruption": 0.03
+      }
+    },
+    {
+      "name": "Montenegro",
+      "nameRu": "Черногория",
+      "region": "Central and Eastern Europe",
+      "regionRu": "Центральная и Восточная Европа",
+      "rank": 76,
+      "score": 5.707,
+      "confidenceLow": 5.599,
+      "confidenceHigh": 5.815,
+      "contributions": {
+        "gdp": 1.571,
+        "support": 1.318,
+        "health": 0.587,
+        "freedom": 0.632,
+        "generosity": 0.11,
+        "corruption": 0.132
+      }
+    },
+    {
+      "name": "Mongolia",
+      "nameRu": "Монголия",
+      "region": "East Asia",
+      "regionRu": "Восточная Азия",
+      "rank": 77,
+      "score": 5.696,
+      "confidenceLow": 5.61,
+      "confidenceHigh": 5.783,
+      "contributions": {
+        "gdp": 1.353,
+        "support": 1.511,
+        "health": 0.4,
+        "freedom": 0.501,
+        "generosity": 0.237,
+        "corruption": 0.055
+      }
+    },
+    {
+      "name": "Colombia",
+      "nameRu": "Колумбия",
+      "region": "Latin America and Caribbean",
+      "regionRu": "Латинская Америка и Карибы",
+      "rank": 78,
+      "score": 5.695,
+      "confidenceLow": 5.584,
+      "confidenceHigh": 5.806,
+      "contributions": {
+        "gdp": 1.437,
+        "support": 1.241,
+        "health": 0.648,
+        "freedom": 0.644,
+        "generosity": 0.072,
+        "corruption": 0.059
+      }
+    },
+    {
+      "name": "Venezuela",
+      "nameRu": "Венесуэла",
+      "region": "Latin America and Caribbean",
+      "regionRu": "Латинская Америка и Карибы",
+      "rank": 79,
+      "score": 5.607,
+      "confidenceLow": 5.489,
+      "confidenceHigh": 5.725,
+      "contributions": {
+        "gdp": 0,
+        "support": 1.321,
+        "health": 0.491,
+        "freedom": 0.518,
+        "generosity": 0.192,
+        "corruption": 0.086
+      }
+    },
+    {
+      "name": "Indonesia",
+      "nameRu": "Индонезия",
+      "region": "Southeast Asia",
+      "regionRu": "Юго-Восточная Азия",
+      "rank": 80,
+      "score": 5.568,
+      "confidenceLow": 5.466,
+      "confidenceHigh": 5.67,
+      "contributions": {
+        "gdp": 1.361,
+        "support": 1.184,
+        "health": 0.472,
+        "freedom": 0.779,
+        "generosity": 0.399,
+        "corruption": 0.055
+      }
+    },
+    {
+      "name": "Bulgaria",
+      "nameRu": "Болгария",
+      "region": "Central and Eastern Europe",
+      "regionRu": "Центральная и Восточная Европа",
+      "rank": 81,
+      "score": 5.463,
+      "confidenceLow": 5.357,
+      "confidenceHigh": 5.569,
+      "contributions": {
+        "gdp": 1.629,
+        "support": 1.469,
+        "health": 0.567,
+        "freedom": 0.62,
+        "generosity": 0.083,
+        "corruption": 0.006
+      }
+    },
+    {
+      "name": "Armenia",
+      "nameRu": "Армения",
+      "region": "Commonwealth of Independent States",
+      "regionRu": "СНГ",
+      "rank": 82,
+      "score": 5.455,
+      "confidenceLow": 5.35,
+      "confidenceHigh": 5.56,
+      "contributions": {
+        "gdp": 1.444,
+        "support": 1.154,
+        "health": 0.603,
+        "freedom": 0.65,
+        "generosity": 0.051,
+        "corruption": 0.173
+      }
+    },
+    {
+      "name": "South Africa",
+      "nameRu": "ЮАР",
+      "region": "Sub-Saharan Africa",
+      "regionRu": "Африка к югу от Сахары",
+      "rank": 83,
+      "score": 5.422,
+      "confidenceLow": 5.295,
+      "confidenceHigh": 5.549,
+      "contributions": {
+        "gdp": 1.389,
+        "support": 1.369,
+        "health": 0.322,
+        "freedom": 0.537,
+        "generosity": 0.078,
+        "corruption": 0.034
+      }
+    },
+    {
+      "name": "North Macedonia",
+      "nameRu": "Северная Македония",
+      "region": "Central and Eastern Europe",
+      "regionRu": "Центральная и Восточная Европа",
+      "rank": 84,
+      "score": 5.369,
+      "confidenceLow": 5.27,
+      "confidenceHigh": 5.468,
+      "contributions": {
+        "gdp": 1.475,
+        "support": 1.277,
+        "health": 0.569,
+        "freedom": 0.58,
+        "generosity": 0.194,
+        "corruption": 0.015
+      }
+    },
+    {
+      "name": "Algeria",
+      "nameRu": "Алжир",
+      "region": "Middle East and North Africa",
+      "regionRu": "Ближний Восток и Северная Африка",
+      "rank": 85,
+      "score": 5.364,
+      "confidenceLow": 5.251,
+      "confidenceHigh": 5.476,
+      "contributions": {
+        "gdp": 1.324,
+        "support": 1.191,
+        "health": 0.568,
+        "freedom": 0.247,
+        "generosity": 0.091,
+        "corruption": 0.2
+      }
+    },
+    {
+      "name": "Hong Kong S.A.R. of China",
+      "nameRu": "Гонконг (Китай)",
+      "region": "East Asia",
+      "regionRu": "Восточная Азия",
+      "rank": 86,
+      "score": 5.316,
+      "confidenceLow": 5.229,
+      "confidenceHigh": 5.403,
+      "contributions": {
+        "gdp": 1.909,
+        "support": 1.184,
+        "health": 0.857,
+        "freedom": 0.485,
+        "generosity": 0.147,
+        "corruption": 0.402
+      }
+    },
+    {
+      "name": "Albania",
+      "nameRu": "Албания",
+      "region": "Central and Eastern Europe",
+      "regionRu": "Центральная и Восточная Европа",
+      "rank": 87,
+      "score": 5.304,
+      "confidenceLow": 5.168,
+      "confidenceHigh": 5.44,
+      "contributions": {
+        "gdp": 1.438,
+        "support": 0.924,
+        "health": 0.638,
+        "freedom": 0.69,
+        "generosity": 0.138,
+        "corruption": 0.049
+      }
+    },
+    {
+      "name": "Tajikistan",
+      "nameRu": "Таджикистан",
+      "region": "Commonwealth of Independent States",
+      "regionRu": "СНГ",
+      "rank": 88,
+      "score": 5.281,
+      "confidenceLow": 5.201,
+      "confidenceHigh": 5.361,
+      "contributions": {
+        "gdp": null,
+        "support": null,
+        "health": null,
+        "freedom": null,
+        "generosity": null,
+        "corruption": null
+      }
+    },
+    {
+      "name": "Congo (Brazzaville)",
+      "nameRu": "Республика Конго",
+      "region": "Sub-Saharan Africa",
+      "regionRu": "Африка к югу от Сахары",
+      "rank": 89,
+      "score": 5.221,
+      "confidenceLow": 5.047,
+      "confidenceHigh": 5.396,
+      "contributions": {
+        "gdp": 0.892,
+        "support": 0.622,
+        "health": 0.306,
+        "freedom": 0.523,
+        "generosity": 0.124,
+        "corruption": 0.138
+      }
+    },
+    {
+      "name": "Mozambique",
+      "nameRu": "Мозамбик",
+      "region": "Sub-Saharan Africa",
+      "regionRu": "Африка к югу от Сахары",
+      "rank": 90,
+      "score": 5.216,
+      "confidenceLow": 5.027,
+      "confidenceHigh": 5.406,
+      "contributions": {
+        "gdp": 0.56,
+        "support": 0.883,
+        "health": 0.156,
+        "freedom": 0.728,
+        "generosity": 0.158,
+        "corruption": 0.196
+      }
+    },
+    {
+      "name": "Georgia",
+      "nameRu": "Грузия",
+      "region": "Commonwealth of Independent States",
+      "regionRu": "СНГ",
+      "rank": 91,
+      "score": 5.185,
+      "confidenceLow": 5.087,
+      "confidenceHigh": 5.283,
+      "contributions": {
+        "gdp": 1.467,
+        "support": 0.99,
+        "health": 0.524,
+        "freedom": 0.68,
+        "generosity": 0,
+        "corruption": 0.174
+      }
+    },
+    {
+      "name": "Iraq",
+      "nameRu": "Ирак",
+      "region": "Middle East and North Africa",
+      "regionRu": "Ближний Восток и Северная Африка",
+      "rank": 92,
+      "score": 5.166,
+      "confidenceLow": 5.049,
+      "confidenceHigh": 5.283,
+      "contributions": {
+        "gdp": 1.249,
+        "support": 0.996,
+        "health": 0.498,
+        "freedom": 0.425,
+        "generosity": 0.141,
+        "corruption": 0.048
+      }
+    },
+    {
+      "name": "Nepal",
+      "nameRu": "Непал",
+      "region": "South Asia",
+      "regionRu": "Южная Азия",
+      "rank": 93,
+      "score": 5.158,
+      "confidenceLow": 5.027,
+      "confidenceHigh": 5.29,
+      "contributions": {
+        "gdp": 0.965,
+        "support": 0.99,
+        "health": 0.443,
+        "freedom": 0.653,
+        "generosity": 0.209,
+        "corruption": 0.115
+      }
+    },
+    {
+      "name": "Laos",
+      "nameRu": "Лаос",
+      "region": "Southeast Asia",
+      "regionRu": "Юго-Восточная Азия",
+      "rank": 94,
+      "score": 5.139,
+      "confidenceLow": 5.017,
+      "confidenceHigh": 5.261,
+      "contributions": {
+        "gdp": 1.208,
+        "support": 0.846,
+        "health": 0.423,
+        "freedom": 0.796,
+        "generosity": 0.17,
+        "corruption": 0.167
+      }
+    },
+    {
+      "name": "Gabon",
+      "nameRu": "Габон",
+      "region": "Sub-Saharan Africa",
+      "regionRu": "Африка к югу от Сахары",
+      "rank": 95,
+      "score": 5.106,
+      "confidenceLow": 4.969,
+      "confidenceHigh": 5.243,
+      "contributions": {
+        "gdp": 1.403,
+        "support": 1.038,
+        "health": 0.344,
+        "freedom": 0.516,
+        "generosity": 0.045,
+        "corruption": 0.1
+      }
+    },
+    {
+      "name": "Ivory Coast",
+      "nameRu": "Кот-д’Ивуар",
+      "region": "Sub-Saharan Africa",
+      "regionRu": "Африка к югу от Сахары",
+      "rank": 96,
+      "score": 5.08,
+      "confidenceLow": 4.936,
+      "confidenceHigh": 5.224,
+      "contributions": {
+        "gdp": 1.08,
+        "support": 0.578,
+        "health": 0.288,
+        "freedom": 0.547,
+        "generosity": 0.12,
+        "corruption": 0.164
+      }
+    },
+    {
+      "name": "Guinea",
+      "nameRu": "Гвинея",
+      "region": "Sub-Saharan Africa",
+      "regionRu": "Африка к югу от Сахары",
+      "rank": 97,
+      "score": 5.023,
+      "confidenceLow": 4.881,
+      "confidenceHigh": 5.166,
+      "contributions": {
+        "gdp": 0.831,
+        "support": 0.622,
+        "health": 0.236,
+        "freedom": 0.521,
+        "generosity": 0.21,
+        "corruption": 0.107
+      }
+    },
+    {
+      "name": "Turkiye",
+      "nameRu": "Турция",
+      "region": "Middle East and North Africa",
+      "regionRu": "Ближний Восток и Северная Африка",
+      "rank": 98,
+      "score": 4.975,
+      "confidenceLow": 4.866,
+      "confidenceHigh": 5.085,
+      "contributions": {
+        "gdp": 1.702,
+        "support": 1.175,
+        "health": 0.631,
+        "freedom": 0.202,
+        "generosity": 0.068,
+        "corruption": 0.115
+      }
+    },
+    {
+      "name": "Senegal",
+      "nameRu": "Сенегал",
+      "region": "Sub-Saharan Africa",
+      "regionRu": "Африка к югу от Сахары",
+      "rank": 99,
+      "score": 4.969,
+      "confidenceLow": 4.841,
+      "confidenceHigh": 5.096,
+      "contributions": {
+        "gdp": 0.927,
+        "support": 0.751,
+        "health": 0.392,
+        "freedom": 0.607,
+        "generosity": 0.152,
+        "corruption": 0.069
+      }
+    },
+    {
+      "name": "Iran",
+      "nameRu": "Иран",
+      "region": "Middle East and North Africa",
+      "regionRu": "Ближний Восток и Северная Африка",
+      "rank": 100,
+      "score": 4.923,
+      "confidenceLow": 4.822,
+      "confidenceHigh": 5.024,
+      "contributions": {
+        "gdp": 1.435,
+        "support": 1.136,
+        "health": 0.571,
+        "freedom": 0.366,
+        "generosity": 0.235,
+        "corruption": 0.123
+      }
+    },
+    {
+      "name": "Azerbaijan",
+      "nameRu": "Азербайджан",
+      "region": "Commonwealth of Independent States",
+      "regionRu": "СНГ",
+      "rank": 101,
+      "score": 4.893,
+      "confidenceLow": 4.768,
+      "confidenceHigh": 5.018,
+      "contributions": {
+        "gdp": 1.433,
+        "support": 0.876,
+        "health": 0.496,
+        "freedom": 0.668,
+        "generosity": 0.112,
+        "corruption": 0.199
+      }
+    },
+    {
+      "name": "Nigeria",
+      "nameRu": "Нигерия",
+      "region": "Sub-Saharan Africa",
+      "regionRu": "Африка к югу от Сахары",
+      "rank": 102,
+      "score": 4.881,
+      "confidenceLow": 4.744,
+      "confidenceHigh": 5.018,
+      "contributions": {
+        "gdp": 1.042,
+        "support": 1.075,
+        "health": 0.256,
+        "freedom": 0.566,
+        "generosity": 0.201,
+        "corruption": 0.019
+      }
+    },
+    {
+      "name": "State of Palestine",
+      "nameRu": "Палестина",
+      "region": "Middle East and North Africa",
+      "regionRu": "Ближний Восток и Северная Африка",
+      "rank": 103,
+      "score": 4.879,
+      "confidenceLow": 4.753,
+      "confidenceHigh": 5.006,
+      "contributions": {
+        "gdp": null,
+        "support": null,
+        "health": null,
+        "freedom": null,
+        "generosity": null,
+        "corruption": null
+      }
+    },
+    {
+      "name": "Cameroon",
+      "nameRu": "Камерун",
+      "region": "Sub-Saharan Africa",
+      "regionRu": "Африка к югу от Сахары",
+      "rank": 104,
+      "score": 4.874,
+      "confidenceLow": 4.753,
+      "confidenceHigh": 4.996,
+      "contributions": {
+        "gdp": 0.943,
+        "support": 0.856,
+        "health": 0.288,
+        "freedom": 0.521,
+        "generosity": 0.126,
+        "corruption": 0.06
+      }
+    },
+    {
+      "name": "Ukraine",
+      "nameRu": "Украина",
+      "region": "Commonwealth of Independent States",
+      "regionRu": "СНГ",
+      "rank": 105,
+      "score": 4.873,
+      "confidenceLow": 4.758,
+      "confidenceHigh": 4.988,
+      "contributions": {
+        "gdp": 1.35,
+        "support": 1.315,
+        "health": 0.513,
+        "freedom": 0.631,
+        "generosity": 0.285,
+        "corruption": 0.025
+      }
+    },
+    {
+      "name": "Namibia",
+      "nameRu": "Намибия",
+      "region": "Sub-Saharan Africa",
+      "regionRu": "Африка к югу от Сахары",
+      "rank": 106,
+      "score": 4.832,
+      "confidenceLow": 4.705,
+      "confidenceHigh": 4.958,
+      "contributions": {
+        "gdp": 1.266,
+        "support": 1.212,
+        "health": 0.307,
+        "freedom": 0.47,
+        "generosity": 0.069,
+        "corruption": 0.061
+      }
+    },
+    {
+      "name": "Morocco",
+      "nameRu": "Марокко",
+      "region": "Middle East and North Africa",
+      "regionRu": "Ближний Восток и Северная Африка",
+      "rank": 107,
+      "score": 4.795,
+      "confidenceLow": 4.677,
+      "confidenceHigh": 4.912,
+      "contributions": {
+        "gdp": 1.213,
+        "support": 0.471,
+        "health": 0.495,
+        "freedom": 0.631,
+        "generosity": 0.042,
+        "corruption": 0.082
+      }
+    },
+    {
+      "name": "Pakistan",
+      "nameRu": "Пакистан",
+      "region": "South Asia",
+      "regionRu": "Южная Азия",
+      "rank": 108,
+      "score": 4.657,
+      "confidenceLow": 4.535,
+      "confidenceHigh": 4.779,
+      "contributions": {
+        "gdp": 1.069,
+        "support": 0.6,
+        "health": 0.321,
+        "freedom": 0.542,
+        "generosity": 0.144,
+        "corruption": 0.074
+      }
+    },
+    {
+      "name": "Niger",
+      "nameRu": "Нигер",
+      "region": "Sub-Saharan Africa",
+      "regionRu": "Африка к югу от Сахары",
+      "rank": 109,
+      "score": 4.556,
+      "confidenceLow": 4.401,
+      "confidenceHigh": 4.712,
+      "contributions": {
+        "gdp": 0.573,
+        "support": 0.677,
+        "health": 0.293,
+        "freedom": 0.615,
+        "generosity": 0.145,
+        "corruption": 0.147
+      }
+    },
+    {
+      "name": "Burkina Faso",
+      "nameRu": "Буркина-Фасо",
+      "region": "Sub-Saharan Africa",
+      "regionRu": "Африка к югу от Сахары",
+      "rank": 110,
+      "score": 4.548,
+      "confidenceLow": 4.41,
+      "confidenceHigh": 4.686,
+      "contributions": {
+        "gdp": 0.756,
+        "support": 0.685,
+        "health": 0.274,
+        "freedom": 0.483,
+        "generosity": 0.173,
+        "corruption": 0.179
+      }
+    },
+    {
+      "name": "Mauritania",
+      "nameRu": "Мавритания",
+      "region": "Sub-Saharan Africa",
+      "regionRu": "Африка к югу от Сахары",
+      "rank": 111,
+      "score": 4.505,
+      "confidenceLow": 4.337,
+      "confidenceHigh": 4.673,
+      "contributions": {
+        "gdp": 1.078,
+        "support": 0.705,
+        "health": 0.4,
+        "freedom": 0.343,
+        "generosity": 0.133,
+        "corruption": 0.198
+      }
+    },
+    {
+      "name": "Gambia",
+      "nameRu": "Гамбия",
+      "region": "Sub-Saharan Africa",
+      "regionRu": "Африка к югу от Сахары",
+      "rank": 112,
+      "score": 4.485,
+      "confidenceLow": 4.344,
+      "confidenceHigh": 4.625,
+      "contributions": {
+        "gdp": 0.75,
+        "support": 0.684,
+        "health": 0.33,
+        "freedom": 0.459,
+        "generosity": 0.324,
+        "corruption": 0.048
+      }
+    },
+    {
+      "name": "Chad",
+      "nameRu": "Чад",
+      "region": "Sub-Saharan Africa",
+      "regionRu": "Африка к югу от Сахары",
+      "rank": 113,
+      "score": 4.471,
+      "confidenceLow": 4.313,
+      "confidenceHigh": 4.63,
+      "contributions": {
+        "gdp": 0.603,
+        "support": 0.805,
+        "health": 0.199,
+        "freedom": 0.411,
+        "generosity": 0.218,
+        "corruption": 0.113
+      }
+    },
+    {
+      "name": "Kenya",
+      "nameRu": "Кения",
+      "region": "Sub-Saharan Africa",
+      "regionRu": "Африка к югу от Сахары",
+      "rank": 114,
+      "score": 4.47,
+      "confidenceLow": 4.344,
+      "confidenceHigh": 4.595,
+      "contributions": {
+        "gdp": 1.037,
+        "support": 0.895,
+        "health": 0.353,
+        "freedom": 0.519,
+        "generosity": 0.282,
+        "corruption": 0.069
+      }
+    },
+    {
+      "name": "Tunisia",
+      "nameRu": "Тунис",
+      "region": "Middle East and North Africa",
+      "regionRu": "Ближний Восток и Северная Африка",
+      "rank": 115,
+      "score": 4.422,
+      "confidenceLow": 4.338,
+      "confidenceHigh": 4.505,
+      "contributions": {
+        "gdp": 1.306,
+        "support": 0.955,
+        "health": 0.579,
+        "freedom": 0.254,
+        "generosity": 0.024,
+        "corruption": 0.018
+      }
+    },
+    {
+      "name": "Benin",
+      "nameRu": "Бенин",
+      "region": "Sub-Saharan Africa",
+      "regionRu": "Африка к югу от Сахары",
+      "rank": 116,
+      "score": 4.377,
+      "confidenceLow": 4.245,
+      "confidenceHigh": 4.51,
+      "contributions": {
+        "gdp": 0.914,
+        "support": 0.128,
+        "health": 0.284,
+        "freedom": 0.567,
+        "generosity": 0.112,
+        "corruption": 0.252
+      }
+    },
+    {
+      "name": "Uganda",
+      "nameRu": "Уганда",
+      "region": "Sub-Saharan Africa",
+      "regionRu": "Африка к югу от Сахары",
+      "rank": 117,
+      "score": 4.372,
+      "confidenceLow": 4.243,
+      "confidenceHigh": 4.501,
+      "contributions": {
+        "gdp": 0.772,
+        "support": 1.151,
+        "health": 0.373,
+        "freedom": 0.587,
+        "generosity": 0.178,
+        "corruption": 0.054
+      }
+    },
+    {
+      "name": "Myanmar",
+      "nameRu": "Мьянма",
+      "region": "Southeast Asia",
+      "regionRu": "Юго-Восточная Азия",
+      "rank": 118,
+      "score": 4.354,
+      "confidenceLow": 4.208,
+      "confidenceHigh": 4.501,
+      "contributions": {
+        "gdp": 0.978,
+        "support": 0.988,
+        "health": 0.436,
+        "freedom": 0.45,
+        "generosity": 0.401,
+        "corruption": 0.174
+      }
+    },
+    {
+      "name": "Cambodia",
+      "nameRu": "Камбоджа",
+      "region": "Southeast Asia",
+      "regionRu": "Юго-Восточная Азия",
+      "rank": 119,
+      "score": 4.341,
+      "confidenceLow": 4.236,
+      "confidenceHigh": 4.446,
+      "contributions": {
+        "gdp": 1.011,
+        "support": 1.019,
+        "health": 0.442,
+        "freedom": 0.863,
+        "generosity": 0.17,
+        "corruption": 0.071
+      }
+    },
+    {
+      "name": "Ghana",
+      "nameRu": "Гана",
+      "region": "Sub-Saharan Africa",
+      "regionRu": "Африка к югу от Сахары",
+      "rank": 120,
+      "score": 4.289,
+      "confidenceLow": 4.182,
+      "confidenceHigh": 4.396,
+      "contributions": {
+        "gdp": 1.077,
+        "support": 0.747,
+        "health": 0.36,
+        "freedom": 0.623,
+        "generosity": 0.183,
+        "corruption": 0.028
+      }
+    },
+    {
+      "name": "Liberia",
+      "nameRu": "Либерия",
+      "region": "Sub-Saharan Africa",
+      "regionRu": "Африка к югу от Сахары",
+      "rank": 121,
+      "score": 4.269,
+      "confidenceLow": 4.063,
+      "confidenceHigh": 4.474,
+      "contributions": {
+        "gdp": 0.619,
+        "support": 0.673,
+        "health": 0.301,
+        "freedom": 0.546,
+        "generosity": 0.178,
+        "corruption": 0.075
+      }
+    },
+    {
+      "name": "Mali",
+      "nameRu": "Мали",
+      "region": "Sub-Saharan Africa",
+      "regionRu": "Африка к югу от Сахары",
+      "rank": 122,
+      "score": 4.232,
+      "confidenceLow": 4.117,
+      "confidenceHigh": 4.347,
+      "contributions": {
+        "gdp": 0.747,
+        "support": 0.688,
+        "health": 0.267,
+        "freedom": 0.586,
+        "generosity": 0.12,
+        "corruption": 0.09
+      }
+    },
+    {
+      "name": "Madagascar",
+      "nameRu": "Мадагаскар",
+      "region": "Sub-Saharan Africa",
+      "regionRu": "Африка к югу от Сахары",
+      "rank": 123,
+      "score": 4.228,
+      "confidenceLow": 4.097,
+      "confidenceHigh": 4.359,
+      "contributions": {
+        "gdp": 0.628,
+        "support": 0.823,
+        "health": 0.333,
+        "freedom": 0.25,
+        "generosity": 0.172,
+        "corruption": 0.123
+      }
+    },
+    {
+      "name": "Togo",
+      "nameRu": "Того",
+      "region": "Sub-Saharan Africa",
+      "regionRu": "Африка к югу от Сахары",
+      "rank": 124,
+      "score": 4.214,
+      "confidenceLow": 4.098,
+      "confidenceHigh": 4.33,
+      "contributions": {
+        "gdp": 0.758,
+        "support": 0.586,
+        "health": 0.32,
+        "freedom": 0.453,
+        "generosity": 0.127,
+        "corruption": 0.156
+      }
+    },
+    {
+      "name": "Jordan",
+      "nameRu": "Иордания",
+      "region": "Middle East and North Africa",
+      "regionRu": "Ближний Восток и Северная Африка",
+      "rank": 125,
+      "score": 4.186,
+      "confidenceLow": 4.066,
+      "confidenceHigh": 4.306,
+      "contributions": {
+        "gdp": 1.262,
+        "support": 0.983,
+        "health": 0.594,
+        "freedom": 0.593,
+        "generosity": 0.059,
+        "corruption": 0.189
+      }
+    },
+    {
+      "name": "India",
+      "nameRu": "Индия",
+      "region": "South Asia",
+      "regionRu": "Южная Азия",
+      "rank": 126,
+      "score": 4.054,
+      "confidenceLow": 3.985,
+      "confidenceHigh": 4.123,
+      "contributions": {
+        "gdp": 1.166,
+        "support": 0.653,
+        "health": 0.417,
+        "freedom": 0.767,
+        "generosity": 0.174,
+        "corruption": 0.122
+      }
+    },
+    {
+      "name": "Egypt",
+      "nameRu": "Египет",
+      "region": "Middle East and North Africa",
+      "regionRu": "Ближний Восток и Северная Африка",
+      "rank": 127,
+      "score": 3.977,
+      "confidenceLow": 3.887,
+      "confidenceHigh": 4.066,
+      "contributions": {
+        "gdp": 1.37,
+        "support": 0.996,
+        "health": 0.488,
+        "freedom": 0.49,
+        "generosity": 0.025,
+        "corruption": 0.259
+      }
+    },
+    {
+      "name": "Sri Lanka",
+      "nameRu": "Шри-Ланка",
+      "region": "South Asia",
+      "regionRu": "Южная Азия",
+      "rank": 128,
+      "score": 3.898,
+      "confidenceLow": 3.778,
+      "confidenceHigh": 4.018,
+      "contributions": {
+        "gdp": 1.361,
+        "support": 1.179,
+        "health": 0.586,
+        "freedom": 0.583,
+        "generosity": 0.144,
+        "corruption": 0.031
+      }
+    },
+    {
+      "name": "Bangladesh",
+      "nameRu": "Бангладеш",
+      "region": "South Asia",
+      "regionRu": "Южная Азия",
+      "rank": 129,
+      "score": 3.886,
+      "confidenceLow": 3.778,
+      "confidenceHigh": 3.994,
+      "contributions": {
+        "gdp": 1.122,
+        "support": 0.249,
+        "health": 0.513,
+        "freedom": 0.775,
+        "generosity": 0.14,
+        "corruption": 0.167
+      }
+    },
+    {
+      "name": "Ethiopia",
+      "nameRu": "Эфиопия",
+      "region": "Sub-Saharan Africa",
+      "regionRu": "Африка к югу от Сахары",
+      "rank": 130,
+      "score": 3.861,
+      "confidenceLow": 3.725,
+      "confidenceHigh": 3.997,
+      "contributions": {
+        "gdp": 0.792,
+        "support": 0.915,
+        "health": 0.42,
+        "freedom": 0.441,
+        "generosity": 0.27,
+        "corruption": 0.101
+      }
+    },
+    {
+      "name": "Tanzania",
+      "nameRu": "Танзания",
+      "region": "Sub-Saharan Africa",
+      "regionRu": "Африка к югу от Сахары",
+      "rank": 131,
+      "score": 3.781,
+      "confidenceLow": 3.644,
+      "confidenceHigh": 3.917,
+      "contributions": {
+        "gdp": 0.82,
+        "support": 0.706,
+        "health": 0.38,
+        "freedom": 0.709,
+        "generosity": 0.191,
+        "corruption": 0.257
+      }
+    },
+    {
+      "name": "Comoros",
+      "nameRu": "Коморы",
+      "region": "Sub-Saharan Africa",
+      "regionRu": "Африка к югу от Сахары",
+      "rank": 132,
+      "score": 3.566,
+      "confidenceLow": 3.378,
+      "confidenceHigh": 3.754,
+      "contributions": {
+        "gdp": 0.896,
+        "support": 0.328,
+        "health": 0.37,
+        "freedom": 0.172,
+        "generosity": 0.128,
+        "corruption": 0.16
+      }
+    },
+    {
+      "name": "Yemen",
+      "nameRu": "Йемен",
+      "region": "Middle East and North Africa",
+      "regionRu": "Ближний Восток и Северная Африка",
+      "rank": 133,
+      "score": 3.561,
+      "confidenceLow": 3.408,
+      "confidenceHigh": 3.714,
+      "contributions": {
+        "gdp": 0.671,
+        "support": 1.281,
+        "health": 0.293,
+        "freedom": 0.362,
+        "generosity": 0.08,
+        "corruption": 0.113
+      }
+    },
+    {
+      "name": "Zambia",
+      "nameRu": "Замбия",
+      "region": "Sub-Saharan Africa",
+      "regionRu": "Африка к югу от Сахары",
+      "rank": 134,
+      "score": 3.502,
+      "confidenceLow": 3.368,
+      "confidenceHigh": 3.636,
+      "contributions": {
+        "gdp": 0.899,
+        "support": 0.809,
+        "health": 0.264,
+        "freedom": 0.727,
+        "generosity": 0.168,
+        "corruption": 0.109
+      }
+    },
+    {
+      "name": "Eswatini",
+      "nameRu": "Эсватини",
+      "region": "Sub-Saharan Africa",
+      "regionRu": "Африка к югу от Сахары",
+      "rank": 135,
+      "score": 3.502,
+      "confidenceLow": 3.331,
+      "confidenceHigh": 3.673,
+      "contributions": {
+        "gdp": 1.255,
+        "support": 0.925,
+        "health": 0.176,
+        "freedom": 0.284,
+        "generosity": 0.059,
+        "corruption": 0.116
+      }
+    },
+    {
+      "name": "Malawi",
+      "nameRu": "Малави",
+      "region": "Sub-Saharan Africa",
+      "regionRu": "Африка к югу от Сахары",
+      "rank": 136,
+      "score": 3.421,
+      "confidenceLow": 3.281,
+      "confidenceHigh": 3.561,
+      "contributions": {
+        "gdp": 0.617,
+        "support": 0.41,
+        "health": 0.349,
+        "freedom": 0.571,
+        "generosity": 0.135,
+        "corruption": 0.136
+      }
+    },
+    {
+      "name": "Botswana",
+      "nameRu": "Ботсвана",
+      "region": "Sub-Saharan Africa",
+      "regionRu": "Африка к югу от Сахары",
+      "rank": 137,
+      "score": 3.383,
+      "confidenceLow": 3.209,
+      "confidenceHigh": 3.558,
+      "contributions": {
+        "gdp": 1.445,
+        "support": 0.969,
+        "health": 0.241,
+        "freedom": 0.567,
+        "generosity": 0.014,
+        "corruption": 0.082
+      }
+    },
+    {
+      "name": "Zimbabwe",
+      "nameRu": "Зимбабве",
+      "region": "Sub-Saharan Africa",
+      "regionRu": "Африка к югу от Сахары",
+      "rank": 138,
+      "score": 3.341,
+      "confidenceLow": 3.226,
+      "confidenceHigh": 3.457,
+      "contributions": {
+        "gdp": 0.748,
+        "support": 0.85,
+        "health": 0.232,
+        "freedom": 0.487,
+        "generosity": 0.096,
+        "corruption": 0.131
+      }
+    },
+    {
+      "name": "Congo (Kinshasa)",
+      "nameRu": "ДР Конго",
+      "region": "Sub-Saharan Africa",
+      "regionRu": "Африка к югу от Сахары",
+      "rank": 139,
+      "score": 3.295,
+      "confidenceLow": 3.128,
+      "confidenceHigh": 3.462,
+      "contributions": {
+        "gdp": 0.534,
+        "support": 0.665,
+        "health": 0.262,
+        "freedom": 0.473,
+        "generosity": 0.189,
+        "corruption": 0.072
+      }
+    },
+    {
+      "name": "Sierra Leone",
+      "nameRu": "Сьерра-Леоне",
+      "region": "Sub-Saharan Africa",
+      "regionRu": "Африка к югу от Сахары",
+      "rank": 140,
+      "score": 3.245,
+      "confidenceLow": 3.124,
+      "confidenceHigh": 3.366,
+      "contributions": {
+        "gdp": 0.654,
+        "support": 0.566,
+        "health": 0.253,
+        "freedom": 0.469,
+        "generosity": 0.181,
+        "corruption": 0.053
+      }
+    },
+    {
+      "name": "Lesotho",
+      "nameRu": "Лесото",
+      "region": "Sub-Saharan Africa",
+      "regionRu": "Африка к югу от Сахары",
+      "rank": 141,
+      "score": 3.186,
+      "confidenceLow": 2.904,
+      "confidenceHigh": 3.469,
+      "contributions": {
+        "gdp": 0.771,
+        "support": 0.851,
+        "health": 0,
+        "freedom": 0.523,
+        "generosity": 0.082,
+        "corruption": 0.085
+      }
+    },
+    {
+      "name": "Lebanon",
+      "nameRu": "Ливан",
+      "region": "Middle East and North Africa",
+      "regionRu": "Ближний Восток и Северная Африка",
+      "rank": 142,
+      "score": 2.707,
+      "confidenceLow": 2.616,
+      "confidenceHigh": 2.797,
+      "contributions": {
+        "gdp": 1.377,
+        "support": 0.577,
+        "health": 0.556,
+        "freedom": 0.173,
+        "generosity": 0.068,
+        "corruption": 0.029
+      }
+    },
+    {
+      "name": "Afghanistan",
+      "nameRu": "Афганистан",
+      "region": "South Asia",
+      "regionRu": "Южная Азия",
+      "rank": 143,
+      "score": 1.721,
+      "confidenceLow": 1.667,
+      "confidenceHigh": 1.775,
+      "contributions": {
+        "gdp": 0.628,
+        "support": 0,
+        "health": 0.242,
+        "freedom": 0,
+        "generosity": 0.091,
+        "corruption": 0.088
+      }
+    }
+  ]
+}
