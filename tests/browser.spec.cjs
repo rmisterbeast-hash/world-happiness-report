@@ -94,7 +94,12 @@ test('Интерактивная карта: 143 реальные оценки, 
  await expect(page.locator('.world-map__marker')).toHaveCount(6);
  const finland=page.locator('#world-map-regions [data-country="Finland"]');
  await expect(finland).toHaveAttribute('data-score','7.741');
- await finland.hover();
+ const brazil=page.locator('#world-map-regions [data-country="Brazil"]');
+ await brazil.hover();
+ await expect(page.locator('#world-map-tooltip')).toBeVisible();
+ await expect(page.locator('#world-map-tooltip-name')).toHaveText('Бразилия');
+ await expect(page.locator('#world-map-tooltip-value')).toContainText('Оценка жизни:');
+ await finland.focus();
  await expect(page.locator('#world-map-tooltip')).toBeVisible();
  await expect(page.locator('#world-map-tooltip-value')).toContainText('7,741');
  await finland.click();
