@@ -287,3 +287,17 @@ test('Главная следует плану секций: рейтинг по
  expect(order.at(-1)).toBe('cta');
  await expect(page.locator('.hero a[href="#map-heading"]')).toBeVisible();
 });
+
+test('Требования первого экрана: поиск в каталоге и показатели карточки',async({page})=>{
+ await page.goto(base+'countries.html');
+ await expect(page.locator('#hero-country-search')).toBeVisible();
+ await page.locator('#hero-country-search').fill('Молдова');
+ await expect(page.locator('#countries-grid .card')).toHaveCount(1);
+ await expect(page.locator('#search-input')).toHaveValue('Молдова');
+ await page.locator('#search-input').fill('Finland');
+ await expect(page.locator('#hero-country-search')).toHaveValue('Finland');
+ await expect(page.locator('#countries-grid .card')).toHaveCount(1);
+ await page.goto(base+'country.html?name=Finland');
+ await expect(page.locator('#country-hero-score')).toHaveText('7,741');
+ await expect(page.locator('#country-hero-rank')).toHaveText('№ 1');
+});
