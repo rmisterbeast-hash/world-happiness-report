@@ -151,7 +151,7 @@ export async function initWorldMap(countries){
    if(byName.has(select.value))setActive(select.value);
   });
   viewport.addEventListener("scroll",hideTooltip,{passive:true});
-  window.addEventListener("scroll",hideTooltip,{passive:true});
+  // Pointer leave already hides the tooltip; scroll events during auto-focus must not dismiss it.
   const first=byName.has("Finland")?"Finland":countries[0]?.name;
   if(first)setActive(first);
   setText("map-status",coverage.size+" стран и территорий с оценками. Серый цвет — нет данных. Небольшие страны обозначены точками.");
