@@ -194,16 +194,16 @@ test('Крым: точное наведение показывает Украи�
   const elem=document.elementFromPoint(view.x,view.y);
   return {country:elem?.closest('[data-country]')?.dataset.country,
           crimea:elem?.closest('[data-crimea]')?.dataset.crimea,
-          visible:!!elem};
+          visible:!!elem,x:view.x,y:view.y};
  });
  expect(hit.visible).toBe(true);
  expect(hit.country).toBe('Ukraine');
  expect(hit.crimea).toBe('Ukraine');
- await crimea.hover({position:{x:5,y:4}});
+ await page.mouse.move(hit.x,hit.y);
  await expect(page.locator('#world-map-tooltip')).toBeVisible();
  await expect(page.locator('#world-map-tooltip-name')).toHaveText('Крым — Украина');
  await expect(page.locator('#world-map-tooltip-value')).toContainText('Оценка жизни:');
- await crimea.click({position:{x:5,y:4}});
+ await page.mouse.click(hit.x,hit.y);
  await expect(page.locator('#map-country-name')).toHaveText('Украина');
  await expect(page.locator('#map-country-link')).toHaveAttribute('href',/name=Ukraine/);
 });
