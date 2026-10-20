@@ -1,6 +1,6 @@
 import {loadData, factorLabels, factorDetails, formatScore, reportCountryUrl, countryLabel, countryAnnualRows, getFactorRange, normalizeContribution} from "./data.js";
 import {$, text, make, makeLink, emptyInto, setStatus, initModal, initNavigation, countryCard} from "./ui.js";
-import {initWorldMap} from "./world-map.js";
+import {initWorldMap} from "./world-map.js?v=crimea-ukraine-20261020-v2";
 initNavigation();initModal();
 const page=location.pathname.split("/").pop()||"index.html";
 const palette=["#C15C44","#3D405B","#2C7E66","#AF8C3A","#8070B0","#1B7992"];

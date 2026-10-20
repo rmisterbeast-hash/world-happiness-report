@@ -41,6 +41,7 @@ export async function initWorldMap(countries){
  const link=document.getElementById("map-country-link");
  const byName=new Map(countries.map(c=>[c.name,c]));
  const elements=new Map();
+ let crimeaOverlay=null;
  let active=null;
  const hideTooltip=()=>{tooltip.hidden=true;};
 
@@ -51,6 +52,7 @@ export async function initWorldMap(countries){
   if(!country)return;
   const item=elements.get(name);
   if(item)item.classList.add("world-map__country--selected");
+  if(crimeaOverlay)crimeaOverlay.classList.toggle("world-map__country--selected",name==="Ukraine");
   setText("map-country-name",country.nameRu||country.name);
   setText("map-country-position","№ "+country.rank+" в рейтинге World Happiness Report 2024");
   setText("map-country-score",formatScore(country.score));
@@ -67,7 +69,7 @@ export async function initWorldMap(countries){
   }
  };
  function showTooltip(country,fallbackName,e){
-  tipName.textContent=country?.nameRu||fallbackName;
+  tipName.textContent=fallbackName==="Крым — Украина"?"Крым — Украина":(country?.nameRu||fallbackName);
   tipValue.textContent=country
    ?"Оценка жизни: "+formatScore(country.score)+" / 10 · место "+country.rank
    :"Нет данных в рейтинге 2024";
@@ -110,7 +112,7 @@ export async function initWorldMap(countries){
  };
 
  try{
-  const response=await fetch("./data/world-map.json",{cache:"force-cache"});
+  const response=await fetch("./data/world-map.json?v=crimea-ukraine-20261020-v2",{cache:"no-store"});
   if(!response.ok)throw Error("HTTP "+response.status);
   const map=await response.json();
   if(!Array.isArray(map.features)||!Array.isArray(map.markers))throw Error("Некорректная геометрия");
@@ -126,6 +128,35 @@ export async function initWorldMap(countries){
    frame.append(path);
   }
   layer.append(frame);
+
+  // Draw Crimea LAST among territorial fills so the real pointer hit
+  // unequivocally resolves to Ukraine, not the adjacent Russian path.
+  // The country rating still comes exclusively from countries.json.
+  if(map.crimea?.key==="Ukraine" && typeof map.crimea.d==="string"){
+   const ukrainian=byName.get("Ukraine");
+   if(!ukrainian)throw Error("Ukraine is missing in the ratings dataset");
+   crimeaOverlay=svgNode("path",{d:map.crimea.d,"fill-rule":"evenodd"});
+   crimeaOverlay.classList.add("world-map__country","world-map__crimea");
+   crimeaOverlay.dataset.country="Ukraine";
+   crimeaOverlay.dataset.geoName="Крым — Украина";
+   crimeaOverlay.dataset.crimea="Ukraine";
+   crimeaOverlay.dataset.score=String(ukrainian.score);
+   crimeaOverlay.style.fill=colorFor(ukrainian.score);
+   crimeaOverlay.setAttribute("role","button");
+   crimeaOverlay.setAttribute("tabindex","0");
+   crimeaOverlay.setAttribute("aria-label","Крым — Украина; оценка Украины "+formatScore(ukrainian.score)+" из 10; показать данные страны");
+   crimeaOverlay.addEventListener("pointerenter",e=>showTooltip(ukrainian,"Крым — Украина",e));
+   crimeaOverlay.addEventListener("pointermove",e=>showTooltip(ukrainian,"Крым — Украина",e));
+   crimeaOverlay.addEventListener("pointerleave",hideTooltip);
+   crimeaOverlay.addEventListener("focus",e=>showTooltip(ukrainian,"Крым — Украина",e));
+   crimeaOverlay.addEventListener("blur",hideTooltip);
+   crimeaOverlay.addEventListener("click",()=>{setActive("Ukraine");hideTooltip();});
+   crimeaOverlay.addEventListener("keydown",e=>{
+    if(e.key==="Enter"||e.key===" "){e.preventDefault();setActive("Ukraine");hideTooltip();}
+   });
+   // Appended above all other country paths; markers will be appended later.
+   places.append(crimeaOverlay);
+  }
 
   const markerFragment=document.createDocumentFragment();
   for(const point of map.markers){
@@ -155,7 +186,7 @@ export async function initWorldMap(countries){
   // Pointer leave already hides the tooltip; scroll events during auto-focus must not dismiss it.
   const first=byName.has("Finland")?"Finland":countries[0]?.name;
   if(first)setActive(first);
-  setText("map-status",coverage.size+" стран и территорий с оценками. Серый цвет — нет данных. Небольшие страны обозначены точками.");
+  setText("map-status",coverage.size+" стран и территорий с оценками. Крым отображается как часть Украины. Серый цвет — нет данных. Небольшие страны обозначены точками.");
  }catch(error){
   console.error("World happiness map:",error);
   setText("map-status","Не удалось загрузить карту. Оценки стран по-прежнему доступны в каталоге.");

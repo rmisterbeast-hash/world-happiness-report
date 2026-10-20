@@ -44,7 +44,7 @@ for(const page of pages){
  assert.ok((main.match(/<section\b/g)||[]).length>=5,page+' at least 5 sections');
  assert.ok(main.includes('src="./images/'),page+' has illustration');
  assert.ok(html.includes('aria-label'),page+' ARIA markup');
- assert.ok(html.includes('src="./js/app.js"'),page+' application module');
+ assert.ok(html.includes('src="./js/app.js'),page+' application module');
  const wordCount=main.replace(/<[^>]+>/g,' ').trim().split(/\s+/).length;
  assert.ok(wordCount>=200,page+' at least 200 useful words: '+wordCount);
 }
@@ -95,3 +95,10 @@ assert.ok(russiaGeo && ukraineGeo,'Russia and Ukraine map layers must exist');
 assert.equal(svgSubpaths(russiaGeo.d).filter(p=>svgContains(p,crimeaX,crimeaY)).length,0,'Crimea must not be in Russia geometry');
 assert.equal(svgSubpaths(ukraineGeo.d).filter(p=>svgContains(p,crimeaX,crimeaY)).length,1,'Crimea must be inside Ukraine geometry');
 console.log('PASS: Crimean peninsula polygon belongs to Ukraine, not Russia');
+
+assert.equal(geoMap.crimea.key,'Ukraine','Crimea dedicated hit overlay is Ukraine');
+assert.equal(geoMap.crimea.name,'Крым — Украина','Crimea overlay has explicit attribution');
+assert.equal(svgSubpaths(geoMap.crimea.d).length,1);
+assert.equal(svgSubpaths(ukraineGeo.d).some(p=>p===geoMap.crimea.d),true,'Crimea overlay must be identical to Ukraine polygon');
+assert.equal(svgSubpaths(russiaGeo.d).some(p=>p===geoMap.crimea.d),false,'Crimea overlay must not be sourced from Russia');
+console.log('PASS: Crimea interactive overlay uses Ukrainian polygon and data');
