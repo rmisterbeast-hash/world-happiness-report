@@ -1,0 +1,41 @@
+name: Deploy website to GitHub Pages
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+concurrency:
+  group: pages
+  cancel-in-progress: false
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Validate dataset and HTML
+        run: node tests/validate.mjs
+      - name: Prepare clean static site directory
+        run: |
+          mkdir -p dist
+          cp index.html countries.html country.html compare.html factors.html about.html style.css dist/
+          cp -R blocks js images data dist/
+          test -s dist/data/countries.json
+          test -s dist/images/overview-640.webp
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Configure Pages
+        uses: actions/configure-pages@v5
+      - name: Deploy site
+        id: deployment
+        uses: actions/deploy-pages@v4
