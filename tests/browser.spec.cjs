@@ -167,3 +167,43 @@ test('Крым входит в геометрию Украины, а не Рос
  await expect(page.locator('#map-country-score')).not.toHaveText('—');
  await expect(page.locator('#map-country-link')).toHaveAttribute('href',/name=Ukraine/);
 });
+
+test('Крым: точное наведение показывает Украину, без кешированной карты',async({page})=>{
+ await page.setViewportSize({width:1280,height:850});
+ await page.goto(base+'?check=crimea-ukraine-20261020-v2');
+ await expect(page.locator('#map-status')).toContainText('Крым отображается как часть Украины');
+ const crimea=page.locator('#world-map-markers [data-crimea="Ukraine"]');
+ await expect(crimea).toHaveAttribute('data-country','Ukraine');
+ await expect(crimea).toHaveAttribute('aria-label',/Крым — Украина/);
+ await expect(crimea).toHaveAttribute('data-score',/^[0-9.]+$/);
+ const noStore=await page.evaluate(async()=>{
+  const response=await fetch('./data/world-map.json?v=crimea-ukraine-20261020-v2',{cache:'no-store'});
+  const json=await response.json();
+  return {ok:response.ok,meta:json.crimea?.key,revision:response.url};
+ });
+ expect(noStore.ok).toBe(true);
+ expect(noStore.meta).toBe('Ukraine');
+ expect(noStore.revision).toContain('crimea-ukraine-20261020-v2');
+ // Scroll to map viewport and convert the Crimean peninsula coordinate
+ // from SVG user space into a real client pixel for pointer hit testing.
+ await page.locator('#world-map-viewport').scrollIntoViewIfNeeded();
+ const hit=await page.evaluate(()=>{
+  const svg=document.querySelector('#world-map-svg');
+  const pt=new DOMPoint(595,132.333333);
+  const view=pt.matrixTransform(svg.getScreenCTM());
+  const elem=document.elementFromPoint(view.x,view.y);
+  return {country:elem?.closest('[data-country]')?.dataset.country,
+          crimea:elem?.closest('[data-crimea]')?.dataset.crimea,
+          visible:!!elem};
+ });
+ expect(hit.visible).toBe(true);
+ expect(hit.country).toBe('Ukraine');
+ expect(hit.crimea).toBe('Ukraine');
+ await crimea.hover({position:{x:5,y:4}});
+ await expect(page.locator('#world-map-tooltip')).toBeVisible();
+ await expect(page.locator('#world-map-tooltip-name')).toHaveText('Крым — Украина');
+ await expect(page.locator('#world-map-tooltip-value')).toContainText('Оценка жизни:');
+ await crimea.click({position:{x:5,y:4}});
+ await expect(page.locator('#map-country-name')).toHaveText('Украина');
+ await expect(page.locator('#map-country-link')).toHaveAttribute('href',/name=Ukraine/);
+});
