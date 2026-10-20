@@ -237,3 +237,38 @@ test('Источник статистики и условия использов
   await expect(page.locator('.site-footer a[href*="kaggle.com"]')).not.toHaveCount(0);
  }
 });
+
+test('Численные выводы под графиками содержат 40–70 слов',async({page})=>{
+ const count=t=>t.trim().split(/\s+/).filter(Boolean).length;
+ await page.goto(base+'country.html?name=Finland');
+ await expect(page.locator('#history-note')).toContainText('2005');
+ const history=await page.locator('#history-note').textContent();
+ expect(count(history)).toBeGreaterThanOrEqual(40);
+ expect(count(history)).toBeLessThanOrEqual(70);
+ await page.goto(base+'compare.html');
+ await expect(page.locator('#compare-summary')).toContainText('Финляндия');
+ const compare=await page.locator('#compare-summary').textContent();
+ expect(count(compare)).toBeGreaterThanOrEqual(40);
+ expect(count(compare)).toBeLessThanOrEqual(70);
+ await page.goto(base+'factors.html');
+ await expect(page.locator('#factor-summary')).toContainText('Выбран фактор');
+ const scatter=await page.locator('#factor-summary').textContent();
+ expect(count(scatter)).toBeGreaterThanOrEqual(40);
+ expect(count(scatter)).toBeLessThanOrEqual(70);
+});
+test('На мобильном таблица сравнения превращается в карточки, есть ссылки на страны',async({page})=>{
+ await page.setViewportSize({width:320,height:720});
+ await page.goto(base+'compare.html');
+ await expect(page.locator('#compare-table tbody tr')).toHaveCount(6);
+ const info=await page.evaluate(()=>{
+  const table=document.querySelector('#compare-table');
+  const row=table.querySelector('tbody tr');
+  const header=table.querySelector('thead');
+  return {width:table.getBoundingClientRect().width,rowDisplay:getComputedStyle(row).display,headerDisplay:getComputedStyle(header).display,label:row.querySelector('td')?.dataset.label};
+ });
+ expect(info.headerDisplay).toBe('none');
+ expect(info.rowDisplay).toBe('block');
+ expect(info.label).toBe('Финляндия');
+ await expect(page.locator('#compare-links a')).toHaveCount(2);
+ await expect(page.locator('#compare-links a').first()).toHaveAttribute('href',/name=Finland/);
+});
