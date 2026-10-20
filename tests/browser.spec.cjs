@@ -241,7 +241,7 @@ test('Источник статистики и условия использов
 test('Численные выводы под графиками содержат 40–70 слов',async({page})=>{
  const count=t=>t.trim().split(/\s+/).filter(Boolean).length;
  await page.goto(base+'country.html?name=Finland');
- await expect(page.locator('#history-note')).toContainText('2005');
+ await expect(page.locator('#history-note')).toContainText('2006');
  const history=await page.locator('#history-note').textContent();
  expect(count(history)).toBeGreaterThanOrEqual(40);
  expect(count(history)).toBeLessThanOrEqual(70);
