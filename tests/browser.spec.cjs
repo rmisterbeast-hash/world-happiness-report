@@ -1,0 +1,62 @@
+const {test,expect}=require('@playwright/test');
+const base='http://127.0.0.1:8000/';
+test('Главная: реальный рейтинг и переключение',async({page})=>{
+ await page.goto(base);
+ await expect(page.locator('#ranking-top li')).toHaveCount(5);
+ await expect(page.locator('#ranking-top li').first()).toContainText('Финляндия');
+ await page.locator('#year-select').selectOption('2020');
+ await expect(page.locator('#ranking-count')).toContainText('пересчитано');
+});
+test('Каталог: поиск, регион, пагинация',async({page})=>{
+ await page.goto(base+'countries.html');
+ await expect(page.locator('#countries-grid .card')).toHaveCount(12);
+ await page.locator('#search-input').fill('Молдова');
+ await expect(page.locator('#countries-grid .card')).toHaveCount(1);
+ await expect(page.locator('#countries-grid')).toContainText('Молдова');
+ await page.locator('#search-input').fill('');
+ await expect(page.locator('#countries-grid .card')).toHaveCount(12);
+ await expect(page.locator('#pagination button')).not.toHaveCount(0);
+});
+test('Карточка: значения, факторы и избранное',async({page})=>{
+ await page.goto(base+'country.html?name=Finland');
+ await expect(page.locator('#country-score')).toContainText('7,741');
+ await expect(page.locator('.factor-row')).toHaveCount(6);
+ await page.locator('#favorite-button').click();
+ await expect(page.locator('#favorite-button')).toHaveAttribute('aria-pressed','true');
+ await expect.poll(()=>page.evaluate(()=>JSON.parse(localStorage.getItem('whr-favorites')||'[]'))).toContain('Finland');
+});
+test('Сравнение: две страны и третья',async({page})=>{
+ await page.goto(base+'compare.html');
+ await expect(page.locator('#compare-status')).toContainText('Финляндия');
+ await expect(page.locator('#compare-table tbody tr')).toHaveCount(6);
+ await page.locator('#compare-three').selectOption('Denmark');
+ await expect(page.locator('#compare-table thead th')).toHaveCount(4);
+});
+test('Калькулятор и информация о факторах',async({page})=>{
+ await page.goto(base+'factors.html');
+ await expect(page.locator('#calculator-inputs input')).toHaveCount(6);
+ await page.locator('#calculate-btn').click();
+ await expect(page.locator('#calculator-result')).toContainText('Условный персональный индекс');
+ await page.locator('[data-info="gdp"]').click();
+ await expect(page.locator('#info-modal')).toBeVisible();
+ await page.keyboard.press('Escape');
+ await expect(page.locator('#info-modal')).toBeHidden();
+});
+test('Об источнике: schema.org и страницы адаптируются',async({page})=>{
+ await page.goto(base+'about.html');
+ const meta=await page.locator('script[type="application/ld+json"]').textContent();
+ expect(JSON.parse(meta)['@type']).toBe('Dataset');
+ await page.setViewportSize({width:320,height:700});
+ await page.locator('#menu-toggle').click();
+ await expect(page.locator('#main-menu')).toBeVisible();
+ await page.locator('#menu-toggle').click();
+ await expect(page.locator('#main-menu')).toBeHidden();
+});
+test('No JS page errors in core navigation',async({page})=>{
+ const exceptions=[];page.on('pageerror',e=>exceptions.push(e.message));
+ for(const path of ['','countries.html','country.html?name=Finland','compare.html','factors.html','about.html']){
+  await page.goto(base+path);
+  await page.waitForTimeout(700);
+ }
+ expect(exceptions).toEqual([]);
+});

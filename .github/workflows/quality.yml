@@ -1,0 +1,43 @@
+name: Validate WHR website
+on:
+  push:
+    branches: [main, 'feature/**']
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  static-and-browser:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Check JavaScript syntax
+        run: |
+          node --check js/data.js
+          node --check js/ui.js
+          node --check js/app.js
+          node --check tests/validate.mjs
+      - name: Verify actual dataset integrity and page structure
+        run: node tests/validate.mjs
+      - name: Install Playwright
+        run: |
+          npm install --no-save @playwright/test@1.56.1
+          npx playwright install --with-deps chromium
+      - name: Start local static server
+        run: |
+          python3 -m http.server 8000 --bind 127.0.0.1 >/tmp/whr-http.log 2>&1 &
+          sleep 2
+      - name: Run browser smoke tests
+        run: npx playwright test --config=playwright.config.cjs
+      - name: Upload report on failure
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: playwright-test-results
+          path: test-results/
+          retention-days: 7

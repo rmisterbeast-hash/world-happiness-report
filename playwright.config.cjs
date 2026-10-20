@@ -1,0 +1,1 @@
+module.exports={testDir:'./tests',testMatch:'**/*.spec.cjs',timeout:45000,expect:{timeout:12000},use:{headless:true,browserName:'chromium'},retries:1,workers:1,reporter:[['list']]};

@@ -1,0 +1,55 @@
+import assert from 'node:assert/strict';
+import {readFileSync,statSync} from 'node:fs';
+import {resolve} from 'node:path';
+import {getFactorRange,normalizeContribution} from '../js/data.js';
+const read=path=>JSON.parse(readFileSync(resolve(path),'utf8'));
+const {countries,meta:countryMeta}=read('data/countries.json');
+const {records,meta:annualMeta}=read('data/happiness.json');
+const {years}=read('data/ranking.json');
+assert.equal(countries.length,143,'2024: 143 countries');
+assert.equal(records.length,2363,'Annual series: 2363 rows');
+assert.equal(annualMeta.years[0],2005);assert.equal(annualMeta.years[1],2023);
+assert.equal(years['2024'].kind,'published-report');
+assert.equal(years['2024'].count,countries.length);
+assert.equal(years['2024'].entries[0].name,'Finland');
+assert.equal(years['2024'].entries[0].score,7.741);
+const names=new Set(countries.map(x=>x.name));assert.equal(names.size,countries.length,'unique countries');
+assert.equal(countries.filter(x=>!x.nameRu).length,0,'all Russian names provided');
+assert.equal(countries.filter(x=>!x.regionRu).length,0,'all regional translations provided');
+for(const country of countries){
+ assert.ok(country.score>=0&&country.score<=10);
+ assert.ok(country.contributions&&Object.keys(country.contributions).length===6);
+ assert.ok(country.rank>=1&&country.rank<=countries.length);
+}
+const pairs=new Set();
+for(const r of records){assert.ok(r.year>=2005&&r.year<=2023);assert.ok(r.score===null||(r.score>=0&&r.score<=10));
+ const id=r.name+':'+r.year;assert.ok(!pairs.has(id),'unique country-year '+id);pairs.add(id);}
+for(const [year,row] of Object.entries(years)){
+ assert.equal(row.count,row.entries.length);
+ for(const [i,entry] of row.entries.entries()){assert.equal(entry.rank,i+1);if(i>0)assert.ok(entry.score<=row.entries[i-1].score);}
+ if(Number(year)!==2024)assert.equal(row.kind,'annual-recomputed');
+}
+for(const f of ['gdp','support','health','freedom','generosity','corruption']){
+ const range=getFactorRange(countries,f);assert.ok(range.max>=range.min);
+ for(const c of countries){const n=normalizeContribution(c.contributions[f],range);if(n!==null)assert.ok(n>=0&&n<=1);}
+}
+assert.equal(normalizeContribution(null,{min:0,max:10}),null,'do not convert missing to zero');
+assert.equal(normalizeContribution(2,{min:2,max:2}),.5,'constant factor handling');
+const pages=['index.html','countries.html','country.html','compare.html','factors.html','about.html'];
+const links=['index','countries','country','compare','factors','about'];
+for(const page of pages){
+ const html=readFileSync(page,'utf8'),main=html.match(/<main id="main">([\s\S]*?)<\/main>/)?.[1]||'';
+ assert.ok(html.includes('<html lang="ru">')&&html.includes('<meta charset="UTF-8">'));
+ assert.equal((main.match(/<h1\b/g)||[]).length,1,page+' one h1');
+ assert.ok((main.match(/<section\b/g)||[]).length>=5,page+' at least 5 sections');
+ assert.ok(main.includes('src="./images/'),page+' has illustration');
+ assert.ok(html.includes('aria-label'),page+' ARIA markup');
+ assert.ok(html.includes('src="./js/app.js"'),page+' application module');
+ const wordCount=main.replace(/<[^>]+>/g,' ').trim().split(/\s+/).length;
+ assert.ok(wordCount>=200,page+' at least 200 useful words: '+wordCount);
+}
+for(const file of ['data/countries.json','data/happiness.json','data/ranking.json']){
+ assert.ok(statSync(file).size<=3*1024*1024,'JSON size limit: '+file);
+}
+assert.ok(readFileSync('about.html','utf8').includes('"@type":"Dataset"'),'Dataset schema');
+console.log('PASS: data integrity, publication method distinctions, six HTML pages and Dataset JSON-LD');
