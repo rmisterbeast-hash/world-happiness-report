@@ -127,8 +127,8 @@ test('У карты одинаковая толщина границ при вы
  await expect(page.locator('#map-status')).toContainText('143 стран');
  await expect(page.locator('#world-map-svg > title')).toHaveCount(0);
  await expect(page.locator('#world-map-svg')).toHaveAttribute('aria-label',/Географическая карта/);
- const russia=page.locator('#world-map-regions [data-country="Russia"]');
- await russia.hover();
+ const brazil=page.locator('#world-map-regions [data-country="Brazil"]');
+ await brazil.hover();
  const afterHover=await page.evaluate(()=>{
   const keys=['Finland','Russia','Brazil','Moldova'];
   return keys.map(k=>{
