@@ -82,6 +82,7 @@ export async function initWorldMap(countries){
  const addRegion=(node,key,name)=>{
   const country=byName.get(key);
   node.dataset.country=key||"";
+  node.dataset.geoName=name;
   if(country){
    node.dataset.score=String(country.score);
    node.style.fill=colorFor(country.score);
