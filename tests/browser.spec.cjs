@@ -150,3 +150,20 @@ test('У карты одинаковая толщина границ при вы
  expect(await selected.evaluate(e=>getComputedStyle(e).strokeWidth)).toBe(regularWidth);
  await expect(page.locator('#world-map-tooltip')).toBeVisible();
 });
+
+test('Крым входит в геометрию Украины, а не России',async({page})=>{
+ await page.goto(base);
+ await expect(page.locator('#map-status')).toContainText('143 стран');
+ const assignment=await page.evaluate(()=>{
+  const uk=document.querySelector('#world-map-regions path[data-country="Ukraine"]');
+  const ru=document.querySelector('#world-map-regions path[data-country="Russia"]');
+  const point=new DOMPoint(595,132.3333333);
+  return {ukraine:uk.isPointInFill(point),russia:ru.isPointInFill(point),ukrainianScore:uk.dataset.score};
+ });
+ expect(assignment.ukraine).toBe(true);
+ expect(assignment.russia).toBe(false);
+ await page.locator('#map-country-select').selectOption('Ukraine');
+ await expect(page.locator('#map-country-name')).toHaveText('Украина');
+ await expect(page.locator('#map-country-score')).not.toHaveText('—');
+ await expect(page.locator('#map-country-link')).toHaveAttribute('href',/name=Ukraine/);
+});
