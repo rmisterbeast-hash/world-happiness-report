@@ -4,6 +4,7 @@ on:
     branches: [main]
     paths:
       - 'scripts/capture_screenshots.cjs'
+      - '*.html'
       - '.github/workflows/screenshots.yml'
   workflow_dispatch:
 permissions:
