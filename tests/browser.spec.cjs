@@ -203,7 +203,17 @@ test('Крым: точное наведение показывает Украи�
  await expect(page.locator('#world-map-tooltip')).toBeVisible();
  await expect(page.locator('#world-map-tooltip-name')).toHaveText('Крым — Украина');
  await expect(page.locator('#world-map-tooltip-value')).toContainText('Оценка жизни:');
- await page.mouse.click(hit.x,hit.y);
+ // Recompute the exact screen coordinates after hover: sticky header resize
+ // and scroll adjustment can move the SVG in WebKit between pointer events.
+ await page.waitForTimeout(300);
+ const fresh=await page.evaluate(()=>{
+   const svg=document.querySelector('#world-map-svg');
+   const p=new DOMPoint(595,132.333333).matrixTransform(svg.getScreenCTM());
+   const region=document.elementFromPoint(p.x,p.y)?.closest('[data-country]');
+   return {x:p.x,y:p.y,country:region?.dataset.country};
+ });
+ expect(fresh.country).toBe('Ukraine');
+ await page.mouse.click(fresh.x,fresh.y);
  await expect(page.locator('#map-country-name')).toHaveText('Украина');
  await expect(page.locator('#map-country-link')).toHaveAttribute('href',/name=Ukraine/);
 });
