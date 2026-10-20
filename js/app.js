@@ -1,5 +1,6 @@
 import {loadData, factorLabels, factorDetails, formatScore, reportCountryUrl, countryLabel, countryAnnualRows, getFactorRange, normalizeContribution} from "./data.js";
 import {$, text, make, makeLink, emptyInto, setStatus, initModal, initNavigation, countryCard} from "./ui.js";
+import {initWorldMap} from "./world-map.js";
 initNavigation();initModal();
 const page=location.pathname.split("/").pop()||"index.html";
 const palette=["#C15C44","#3D405B","#2C7E66","#AF8C3A","#8070B0","#1B7992"];
@@ -43,6 +44,7 @@ async function renderIndex(){
  setStatus("ranking-status",r.kind==="published-report"?"Опубликованное значение: многолетнее среднее по отчёту 2024.":"Исторический рейтинг пересчитан по годовому показателю, не является опубликованным рейтингом WHR.");
  }
  select.addEventListener("change",drawRanking);drawRanking();
+ void initWorldMap(data.countries);
  }catch(e){introError("ranking-status",e);}
 }
 async function renderCatalog(){

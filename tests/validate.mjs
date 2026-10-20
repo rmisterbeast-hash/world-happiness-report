@@ -66,3 +66,13 @@ const totalWords=['index.html','countries.html','country.html','compare.html','f
 },0);
 assert.ok(totalWords>=1300,'Site authored content must be at least 1300 words, found '+totalWords);
 console.log('PASS: 8–10 glossary items, each 30–50 words; site >= 1300 authored words');
+
+const geoMap=read('data/world-map.json');
+const matchedKeys=new Set([...geoMap.features,...geoMap.markers].map(f=>f.key).filter(Boolean));
+assert.equal(geoMap.features.length,176,'Natural Earth non-Antarctic boundaries');
+assert.equal(geoMap.features.filter(f=>f.key).length,137,'Known countries with polygon boundaries');
+assert.equal(geoMap.markers.length,6,'Small countries and territories shown as markers');
+assert.equal(matchedKeys.size,countries.length,'All 143 WHR countries can be selected on map');
+for(const c of countries)assert.ok(matchedKeys.has(c.name),'Unmatched rating on map: '+c.name);
+assert.ok(readFileSync('index.html','utf8').includes('id="world-map-svg"'),'Map section present on homepage');
+console.log('PASS: 143 mapped WHR scores (137 borders + 6 markers), no invented scores');

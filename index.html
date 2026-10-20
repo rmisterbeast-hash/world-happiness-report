@@ -4,6 +4,55 @@
 <body><a class="skip-link" href="#main">Перейти к содержимому</a>
 <header class="site-header"><div class="site-header__inner container"><a class="site-header__brand" href="./index.html" aria-label="Атлас благополучия — главная"><span class="site-header__mark" aria-hidden="true">✳</span><span>Атлас<br><small>благополучия</small></span></a><button class="site-header__toggle" type="button" aria-expanded="false" aria-controls="main-menu" id="menu-toggle">Меню <span aria-hidden="true">☰</span></button><nav id="main-menu" class="site-header__nav" aria-label="Основная навигация"><a href="./index.html" aria-current="page">Главная</a><a href="./countries.html">Страны</a><a href="./compare.html">Сравнение</a><a href="./factors.html">Факторы</a><a href="./about.html">О данных</a></nav></div></header>
 <main id="main"><section class="hero page__section"><div class="container hero__grid"><div><span class="eyebrow">Данные, которые объясняют больше, чем число</span><h1>Как люди оценивают свою жизнь в разных странах?</h1><p class="lead">Рейтинг помогает увидеть международные различия в субъективной оценке жизни. Он полезен для сравнения, но не заменяет описание реального опыта людей.</p><div class="hero__actions"><a class="button" href="./countries.html">Изучить страны <span aria-hidden="true">↗</span></a><a class="button button--outline" href="./about.html">Как устроены данные</a></div></div><img class="hero__image" src="./images/overview-640.webp" srcset="./images/overview-640.webp 640w, ./images/overview-1200.webp 1200w" sizes="(max-width: 900px) 100vw, 50vw" alt="Авторская иллюстрация: города и природные формы, объединённые в инфографику" width="600" height="470" loading="eager" fetchpriority="high"></div></section>
+
+<section class="page__section world-map-section" aria-labelledby="map-heading">
+<div class="container">
+  <span class="eyebrow">Интерактивная аналитика · World Happiness Report 2024</span>
+  <h2 id="map-heading">Карта благополучия стран мира</h2>
+  <p class="world-map__intro">Наведи указатель на страну, чтобы увидеть её оценку жизни по шкале от 0 до 10. Нажми на страну, чтобы узнать место в рейтинге и перейти к подробной карточке. Оттенки карты соответствуют действительным числовым значениям отчёта 2024 года.</p>
+  <div class="world-map__layout" id="world-map">
+    <div class="world-map__main">
+      <div class="world-map__toolbar">
+        <p>Выбери страну на карте или в списке. На телефоне карту можно прокручивать в стороны.</p>
+        <label class="field" for="map-country-select">Найти страну
+          <select id="map-country-select" aria-label="Найти страну на интерактивной карте">
+            <option value="">Загрузка списка стран…</option>
+          </select>
+        </label>
+      </div>
+      <div class="world-map__viewport" id="world-map-viewport" tabindex="0" aria-label="Карта мира. Для просмотра на узком экране прокручивайте её по горизонтали. Страну также можно выбрать в списке выше.">
+        <svg id="world-map-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 500" role="group" aria-labelledby="world-map-svg-title world-map-svg-desc">
+          <title id="world-map-svg-title">Географическая карта оценок жизни в странах мира за 2024 год</title>
+          <desc id="world-map-svg-desc">Зелёные оттенки обозначают высокие оценки жизни, оранжевые и красные — более низкие. Серые территории не имеют оценки в наборе. Для стран доступны клавиатура, касание и выбор в списке.</desc>
+          <g id="world-map-regions"></g><g id="world-map-markers"></g>
+        </svg>
+      </div>
+      <div class="world-map__legend" aria-label="Легенда карты: оценка жизни по шкале 0–10">
+        <strong>Оценка:</strong>
+        <span><i class="world-map__swatch" style="background:#ca6a59"></i>до 3</span>
+        <span><i class="world-map__swatch" style="background:#dd9775"></i>3–4</span>
+        <span><i class="world-map__swatch" style="background:#e7bc84"></i>4–5</span>
+        <span><i class="world-map__swatch" style="background:#c0d1b4"></i>5–6</span>
+        <span><i class="world-map__swatch" style="background:#83b29c"></i>6–7</span>
+        <span><i class="world-map__swatch" style="background:#397f70"></i>7–10</span>
+        <span><i class="world-map__swatch" style="background:#d7d9d3"></i>нет данных</span>
+      </div>
+      <p class="world-map__status" id="map-status" role="status">Загрузка географических границ и оценок жизни…</p>
+    </div>
+    <aside class="world-map__detail" aria-label="Данные выбранной страны">
+      <span class="eyebrow">Выбранная страна</span>
+      <h3 id="map-country-name">Загрузка…</h3>
+      <p id="map-country-position">Позиция в рейтинге</p>
+      <div class="world-map__value"><strong id="map-country-score">—</strong><span>из 10 баллов</span></div>
+      <p id="map-country-context">Выбери страну, чтобы узнать подробности.</p>
+      <a class="button" id="map-country-link" href="./countries.html">Карточка страны ↗</a>
+    </aside>
+  </div>
+  <div class="world-map__tooltip" id="world-map-tooltip" role="tooltip" hidden>
+    <strong id="world-map-tooltip-name"></strong><span id="world-map-tooltip-value"></span>
+  </div>
+  <p class="world-map__note">Источник оценок: World Happiness Report 2024 — средняя оценка жизни за 2021–2023 годы, а не измерение «на сегодня». Географические границы: <a href="https://www.naturalearthdata.com/about/terms-of-use/" target="_blank" rel="noreferrer">Natural Earth</a>. Серые территории не имеют опубликованной оценки в используемом наборе; очень маленькие страны показаны точками. Карта предназначена для аналитики, а не определения политических границ.</p>
+</div></section>
 <section class="page__section" aria-labelledby="rating-heading"><div class="container"><div class="section-heading"><div><span class="eyebrow">Рейтинг стран</span><h2 id="rating-heading">Кто находится в начале и конце списка</h2></div><label class="field">Период данных <select id="year-select" aria-label="Выберите год рейтинга"></select></label></div><p class="muted" id="ranking-status" role="status">Загрузка рейтинга…</p><p class="data-label" id="ranking-count"></p><div class="columns-2"><div class="panel"><h3>Лидеры выбранного рейтинга</h3><ol class="ranking" id="ranking-top"></ol></div><div class="panel"><h3>Завершающие рейтинг</h3><ol class="ranking" id="ranking-bottom"></ol></div></div><p class="help-text">Важно: опубликованный рейтинг отчёта 2024 основан на многолетней оценке; исторические позиции пересчитаны отдельно по годовому ряду.</p></div></section>
 <section class="page__section page__section--soft"><div class="container feature"><div><span class="eyebrow">Правильная интерпретация</span><h2>Что именно измеряет оценка жизни</h2><p>В исследовании применяется лестница Кантрила: респонденту предлагают представить лестницу от нуля до десяти, где верхняя ступень соответствует наилучшей возможной жизни, а нижняя — наихудшей. Человек определяет своё положение на этой шкале самостоятельно. Таким образом, показатель отражает общую оценку собственной жизни, а не интенсивность радости в конкретный день.</p><p>Рейтинг объединяет ответы жителей разных стран и показывает средние значения по соответствующей методике. Разницу между двумя странами необходимо рассматривать с учётом периода наблюдений, статистической неопределённости и числа участников исследования. Именно поэтому на сайте сохранены годовые ряды и отдельный опубликованный рейтинг 2024 года.</p></div><img src="./images/people-640.webp" srcset="./images/people-640.webp 640w, ./images/people-1200.webp 1200w" sizes="(max-width: 900px) 100vw, 50vw" alt="Авторская векторная иллюстрация людей и условных ступеней оценки жизни" width="560" height="380" loading="lazy"></div></section>
 <section class="page__section"><div class="container"><div class="section-heading"><div><span class="eyebrow">Шесть измерений</span><h2>Факторы, сопровождающие благополучие</h2></div></div><div class="cards-3"><article class="card"><div class="card__icon">◈</div><h3>Экономические условия</h3><p>ВВП на душу населения позволяет анализировать связь материальных возможностей и субъективной оценки жизни. Этот показатель не описывает распределение доходов.</p></article><article class="card"><div class="card__icon">♡</div><h3>Социальная поддержка</h3><p>Один из наиболее понятных факторов: ощущение, что в трудную минуту рядом найдётся человек, на которого можно положиться.</p></article><article class="card"><div class="card__icon">✧</div><h3>Свобода выбора</h3><p>Отражает субъективное восприятие возможностей самостоятельно принимать жизненные решения. Измеряется отдельно от оценки жизни.</p></article></div><p class="muted">Помимо этих параметров анализируются здоровая продолжительность жизни, щедрость и восприятие коррупции.</p></div></section>

@@ -12,9 +12,9 @@ IMAGES=ROOT/"images"
 for svg in sorted(IMAGES.glob("*.svg")):
     for width in (640,1200):
         buffer=io.BytesIO(cairosvg.svg2png(url=str(svg),output_width=width))
-        im=Image.open(buffer).convert("RGB")
+        im=Image.open(buffer).convert("RGBA")
         out=IMAGES/f"{svg.stem}-{width}.webp"
-        im.save(out,format="WEBP",quality=82,method=6)
+        im.save(out,format="WEBP",quality=82,method=6,exact=True)
         print(out.relative_to(ROOT), out.stat().st_size, "bytes")
 
 expr=re.compile(r'<img\b[^>]*\bsrc="./images/([a-z]+)\.svg"[^>]*>')

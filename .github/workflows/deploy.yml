@@ -23,6 +23,7 @@ jobs:
           cp index.html countries.html country.html compare.html factors.html about.html style.css dist/
           cp -R blocks js images data dist/
           test -s dist/data/countries.json
+          test -s dist/data/world-map.json
           test -s dist/images/overview-640.webp
       - uses: actions/upload-pages-artifact@v3
         with:
