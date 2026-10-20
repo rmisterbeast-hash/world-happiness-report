@@ -102,3 +102,12 @@ assert.equal(svgSubpaths(geoMap.crimea.d).length,1);
 assert.equal(svgSubpaths(ukraineGeo.d).some(p=>p===geoMap.crimea.d),true,'Crimea overlay must be identical to Ukraine polygon');
 assert.equal(svgSubpaths(russiaGeo.d).some(p=>p===geoMap.crimea.d),false,'Crimea overlay must not be sourced from Russia');
 console.log('PASS: Crimea interactive overlay uses Ukrainian polygon and data');
+
+const homePage=readFileSync('index.html','utf8');
+assert.ok(homePage.includes('id="hero-leader-name"'),'Hero must show the leader');
+assert.ok(homePage.includes('id="ranking-warning"'),'Historic small-year coverage notice');
+for(const page of ['index.html','countries.html','country.html','compare.html','factors.html','about.html']){
+ const content=readFileSync(page,'utf8');
+ assert.ok(content.includes('данные Kaggle и условия использования'),'Data source & licensing link in '+page);
+}
+console.log('PASS: 2024 leader and historical coverage warning; source attribution in six footers');

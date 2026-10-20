@@ -217,3 +217,73 @@ test('Крым: точное наведение показывает Украи�
  await expect(page.locator('#map-country-name')).toHaveText('Украина');
  await expect(page.locator('#map-country-link')).toHaveAttribute('href',/name=Ukraine/);
 });
+
+test('Лидер и ограниченный охват исторического года из JSON',async({page})=>{
+ await page.goto(base);
+ await expect(page.locator('#hero-leader-name')).toHaveText('Финляндия');
+ await expect(page.locator('#hero-leader-score')).toHaveText('7,741');
+ await expect(page.locator('#ranking-warning')).toBeHidden();
+ await page.locator('#year-select').selectOption('2005');
+ await expect(page.locator('#ranking-count')).toContainText('27');
+ await expect(page.locator('#ranking-warning')).toBeVisible();
+ await expect(page.locator('#ranking-warning')).toContainText('27 стран');
+ await page.locator('#year-select').selectOption('2024');
+ await expect(page.locator('#ranking-warning')).toBeHidden();
+});
+test('Источник статистики и условия использования доступны в подвале',async({page})=>{
+ for(const route of ['','countries.html','country.html?name=Finland','compare.html','factors.html','about.html']){
+  await page.goto(base+route);
+  await expect(page.locator('.site-footer')).toContainText('условия использования');
+  await expect(page.locator('.site-footer a[href*="kaggle.com"]')).not.toHaveCount(0);
+ }
+});
+
+test('Численные выводы под графиками содержат 40–70 слов',async({page})=>{
+ const count=t=>t.trim().split(/\s+/).filter(Boolean).length;
+ await page.goto(base+'country.html?name=Finland');
+ await expect(page.locator('#history-note')).toContainText('2006');
+ const history=await page.locator('#history-note').textContent();
+ expect(count(history)).toBeGreaterThanOrEqual(40);
+ expect(count(history)).toBeLessThanOrEqual(70);
+ await page.goto(base+'compare.html');
+ await expect(page.locator('#compare-summary')).toContainText('Финляндия');
+ const compare=await page.locator('#compare-summary').textContent();
+ expect(count(compare)).toBeGreaterThanOrEqual(40);
+ expect(count(compare)).toBeLessThanOrEqual(70);
+ await page.goto(base+'factors.html');
+ await expect(page.locator('#factor-summary')).toContainText('Выбран фактор');
+ const scatter=await page.locator('#factor-summary').textContent();
+ expect(count(scatter)).toBeGreaterThanOrEqual(40);
+ expect(count(scatter)).toBeLessThanOrEqual(70);
+});
+test('На мобильном таблица сравнения превращается в карточки, есть ссылки на страны',async({page})=>{
+ await page.setViewportSize({width:320,height:720});
+ await page.goto(base+'compare.html');
+ await expect(page.locator('#compare-table tbody tr')).toHaveCount(6);
+ const info=await page.evaluate(()=>{
+  const table=document.querySelector('#compare-table');
+  const row=table.querySelector('tbody tr');
+  const header=table.querySelector('thead');
+  return {width:table.getBoundingClientRect().width,rowDisplay:getComputedStyle(row).display,headerDisplay:getComputedStyle(header).display,label:row.querySelector('td')?.dataset.label};
+ });
+ expect(info.headerDisplay).toBe('none');
+ expect(info.rowDisplay).toBe('block');
+ expect(info.label).toBe('Финляндия');
+ await expect(page.locator('#compare-links a')).toHaveCount(2);
+ await expect(page.locator('#compare-links a').first()).toHaveAttribute('href',/name=Finland/);
+});
+
+test('Главная следует плану секций: рейтинг после первого экрана, карта до CTA',async({page})=>{
+ await page.goto(base);
+ const order=await page.locator('main > section').evaluateAll(items=>items.map(e=>
+  e.classList.contains('hero')?'hero':
+  e.querySelector('#rating-heading')?'ranking':
+  e.querySelector('#map-heading')?'world-map':
+  e.classList.contains('cta')?'cta':'other'
+ ));
+ expect(order[0]).toBe('hero');
+ expect(order[1]).toBe('ranking');
+ expect(order.at(-2)).toBe('world-map');
+ expect(order.at(-1)).toBe('cta');
+ await expect(page.locator('.hero a[href="#map-heading"]')).toBeVisible();
+});

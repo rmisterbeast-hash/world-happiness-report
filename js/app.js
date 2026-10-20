@@ -33,6 +33,12 @@ async function renderIndex(){
  const years=Object.keys(ranking.years).map(Number).sort((a,b)=>b-a);
  const select=$("#year-select");for(const y of years){const opt=make("option",null,y===2024?"2024 — опубликованный рейтинг":String(y)+" — годовые данные");opt.value=y;select.append(opt);}
  select.value="2024";
+ const leader=ranking.years["2024"]?.entries?.[0];
+ const leaderData=data.countries.find(c=>c.name===leader?.name);
+ if(leader && leaderData){
+  text("#hero-leader-name",leaderData.nameRu||leaderData.name);
+  text("#hero-leader-score",formatScore(leader.score));
+ }
  function drawRanking(){
  const r=ranking.years[select.value];if(!r)return;
  $("#ranking-top").replaceChildren();$("#ranking-bottom").replaceChildren();
@@ -41,6 +47,12 @@ async function renderIndex(){
  top.forEach(x=>$("#ranking-top").append(row(x)));
  bottom.forEach(x=>$("#ranking-bottom").append(row(x)));
  text("#ranking-count",r.label+" · Стран в наблюдении: "+r.count);
+ const alert=$("#ranking-warning");
+ const limited=r.kind==="annual-recomputed"&&r.count<50;
+ alert.hidden=!limited;
+ alert.textContent=limited
+  ?"Внимание: в "+r.year+" году доступны оценки только "+r.count+" стран. Небольшой охват делает такой пересчитанный рейтинг неполным: отсутствие страны в списке не означает низкий показатель."
+  :"";
  setStatus("ranking-status",r.kind==="published-report"?"Опубликованное значение: многолетнее среднее по отчёту 2024.":"Исторический рейтинг пересчитан по годовому показателю, не является опубликованным рейтингом WHR.");
  }
  select.addEventListener("change",drawRanking);drawRanking();
@@ -128,7 +140,9 @@ async function renderCompare(){
   const datasets=chosen.map((name,i)=>{const m=new Map(countryAnnualRows(name,h.records).map(x=>[x.year,x.score]));return {label:countryLabel(name,countries),data:years.map(y=>m.get(y)??null),borderColor:palette[i],backgroundColor:palette[i],tension:.18,pointRadius:2,spanGaps:false};});
   draw("compare-chart",chartConfig("line",datasets,years,{yMin:0,yMax:10}));
   const table=$("#compare-table");table.replaceChildren();const head=make("thead"),hr=make("tr");hr.append(make("th",null,"Показатель (вклад 2024)"));chosen.forEach(n=>hr.append(make("th",null,countryLabel(n,countries))));head.append(hr);table.append(head);
-  const body=make("tbody");for(const key of keys){const tr=make("tr");tr.append(make("th",null,factorLabels[key]));chosen.forEach(n=>tr.append(make("td",null,formatScore(countries.find(c=>c.name===n)?.contributions[key]))));body.append(tr);}table.append(body);
+  const body=make("tbody");for(const key of keys){const tr=make("tr");tr.append(make("th",null,factorLabels[key]));chosen.forEach(n=>{const td=make("td",null,formatScore(countries.find(c=>c.name===n)?.contributions[key]));td.dataset.label=countryLabel(n,countries);tr.append(td);});body.append(tr);}table.append(body);
+  const links=$("#compare-links");links.replaceChildren();
+  chosen.forEach(n=>links.append(makeLink(reportCountryUrl(n),"Карточка: "+countryLabel(n,countries)+" ↗","button button--small button--outline")));
   const items=chosen.map(n=>countries.find(c=>c.name===n)).filter(Boolean).sort((a,b)=>b.score-a.score);
   if(items.length>=2){const hi=items[0],low=items.at(-1),diff=hi.score-low.score;
    text("#compare-summary",`Среди выбранных стран в опубликованном рейтинге 2024 года более высокая оценка жизни зафиксирована у страны «${hi.nameRu}»: ${formatScore(hi.score)} балла. Для страны «${low.nameRu}» она составляет ${formatScore(low.score)} балла. Разница равна ${formatScore(diff)} балла по шкале от 0 до 10. График выше описывает отдельные годовые наблюдения и не включает значение отчёта 2024. Приведённое сопоставление носит описательный характер и не объясняет причин различий.`);}
