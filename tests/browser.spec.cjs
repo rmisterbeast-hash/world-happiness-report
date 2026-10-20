@@ -85,3 +85,34 @@ test('Некорректный адрес карточки сообщает об
  await expect(page.locator('#country-status')).toContainText('Страна не найдена');
  expect(errors).toEqual([]);
 });
+
+test('Интерактивная карта: 143 реальные оценки, наведение и выбор страны',async({page})=>{
+ await page.goto(base);
+ await expect(page.locator('#map-status')).toContainText('143 стран');
+ await expect(page.locator('#world-map-regions path')).toHaveCount(176);
+ await expect(page.locator('.world-map__country--measured')).toHaveCount(143);
+ await expect(page.locator('.world-map__marker')).toHaveCount(6);
+ const finland=page.locator('#world-map-regions [data-country="Finland"]');
+ await expect(finland).toHaveAttribute('data-score','7.741');
+ await finland.hover();
+ await expect(page.locator('#world-map-tooltip')).toBeVisible();
+ await expect(page.locator('#world-map-tooltip-value')).toContainText('7,741');
+ await finland.click();
+ await expect(page.locator('#map-country-name')).toHaveText('Финляндия');
+ await expect(page.locator('#map-country-link')).toHaveAttribute('href',/country\.html\?name=Finland/);
+ await page.locator('#map-country-select').selectOption('Singapore');
+ await expect(page.locator('#map-country-name')).toHaveText('Сингапур');
+ await expect(page.locator('#world-map-markers [data-country="Singapore"]')).toHaveAttribute('data-score',/^[0-9.]+$/);
+ await expect(page.locator('#map-country-link')).toHaveAttribute('href',/Singapore/);
+ await page.locator('#world-map-regions [data-country="Angola"]').hover();
+ await expect(page.locator('#world-map-tooltip-value')).toHaveText('Нет данных в рейтинге 2024');
+});
+test('Карта на мобильном: выбор страны без необходимости точного касания по контуру',async({page})=>{
+ await page.setViewportSize({width:375,height:812});
+ await page.goto(base);
+ await expect(page.locator('#map-status')).toContainText('143 стран');
+ await page.locator('#map-country-select').selectOption('Moldova');
+ await expect(page.locator('#map-country-name')).toHaveText('Молдова');
+ await expect(page.locator('#map-country-score')).not.toHaveText('—');
+ await expect(page.locator('#world-map-viewport').evaluate(e=>e.scrollWidth>e.clientWidth)).resolves.toBe(true);
+});
