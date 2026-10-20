@@ -26,3 +26,17 @@
 .hero__leader small{flex-basis:100%;color:#5A6071;font-size:.76rem}
 .ranking-warning{border-left:4px solid #B06A35;background:#FFF3DE;border-radius:8px;padding:11px 15px;color:#4D422F;font-weight:700;font-size:.9rem;margin-bottom:18px}
 .ranking-warning[hidden]{display:none}
+
+/* Mobile country comparison: convert wide data table into readable factor cards. */
+.compare-links{display:flex;flex-wrap:wrap;gap:12px;margin:14px 0 24px}
+@media(max-width:630px){
+ #compare-table{display:block;min-width:0!important;border:0}
+ #compare-table thead{display:none}
+ #compare-table tbody{display:grid;gap:12px}
+ #compare-table tr{display:block;border:1px solid var(--line);background:#fff;border-radius:14px;padding:10px 14px}
+ #compare-table th,#compare-table td{display:flex;align-items:center;justify-content:space-between;gap:12px;border-bottom:0!important;padding:9px 2px}
+ #compare-table th{color:var(--ink);font-weight:800}
+ #compare-table td{border-top:1px solid var(--line);font-variant-numeric:tabular-nums;text-align:right}
+ #compare-table td::before{content:attr(data-label);font-weight:700;font-size:.83rem;color:#656A7D;text-align:left;max-width:65%}
+ .compare-links .button{width:100%}
+}
