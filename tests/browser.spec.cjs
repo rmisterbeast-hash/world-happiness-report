@@ -272,3 +272,18 @@ test('На мобильном таблица сравнения превраща
  await expect(page.locator('#compare-links a')).toHaveCount(2);
  await expect(page.locator('#compare-links a').first()).toHaveAttribute('href',/name=Finland/);
 });
+
+test('Главная следует плану секций: рейтинг после первого экрана, карта до CTA',async({page})=>{
+ await page.goto(base);
+ const order=await page.locator('main > section').evaluateAll(items=>items.map(e=>
+  e.classList.contains('hero')?'hero':
+  e.querySelector('#rating-heading')?'ranking':
+  e.querySelector('#map-heading')?'world-map':
+  e.classList.contains('cta')?'cta':'other'
+ ));
+ expect(order[0]).toBe('hero');
+ expect(order[1]).toBe('ranking');
+ expect(order.at(-2)).toBe('world-map');
+ expect(order.at(-1)).toBe('cta');
+ await expect(page.locator('.hero a[href="#map-heading"]')).toBeVisible();
+});
