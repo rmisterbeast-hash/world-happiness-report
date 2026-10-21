@@ -1,0 +1,47 @@
+name: Capture comparative third-party websites
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'scripts/capture_analogs.cjs'
+      - '.github/workflows/analog-screenshots.yml'
+  pull_request:
+    paths:
+      - 'scripts/capture_analogs.cjs'
+      - '.github/workflows/analog-screenshots.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  capture:
+    runs-on: ubuntu-latest
+    timeout-minutes: 22
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install Playwright Chromium
+        run: |
+          npm install --no-save @playwright/test@1.56.1
+          npx playwright install --with-deps chromium
+      - name: Render real analog sites and log errors
+        run: node scripts/capture_analogs.cjs
+      - name: Commit verified comparison screenshots
+        if: github.event_name == 'push'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add docs/analog-screenshots/
+          if ! git diff --staged --quiet; then
+            git commit -m "Document actual homepage and inner-page analog screenshots"
+            git fetch origin main
+            git rebase origin/main
+            git push origin HEAD:main
+          fi
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: comparative-website-screenshots
+          path: docs/analog-screenshots/
+          retention-days: 30
