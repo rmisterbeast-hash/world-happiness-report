@@ -115,8 +115,8 @@ async function renderCountry(){
   const valid=rows.filter(r=>typeof r.score==="number");
   if(valid.length>=2){const first=valid[0],last=valid.at(-1);const delta=last.score-first.score;
   text("#history-note",`В ${first.year} году годовая оценка жизни составляла ${formatScore(first.score)}, а в ${last.year} году — ${formatScore(last.score)} по шкале от 0 до 10. Изменение между доступными крайними точками: ${delta>=0?"+":""}${formatScore(delta)} балла. Этот результат относится только к представленному ряду годовых наблюдений и не объясняет причин изменения. Срез рейтинга 2024 намеренно не добавлен в график.`);}
-  else text("#history-note","В историческом наборе недостаточно точек для выводов о динамике.");
- } else text("#history-note","Годовые наблюдения по этой стране отсутствуют.");
+  else text("#history-note",`По стране «${country?.nameRu||name}» доступно только одно годовое наблюдение с числовой оценкой жизни. Его можно показать на временной оси, однако вычислить изменение за период по одной точке нельзя. Отсутствующие наблюдения не заменяются нулём и не используются для предполагаемого тренда. Показатель опубликованного рейтинга 2024 года имеет другую методику и не подставляется в исторический ряд. Для сравнения рекомендуется выбрать страны с более полными наблюдениями.`);
+ } else text("#history-note",`По стране «${country?.nameRu||name}» в выбранном историческом наборе нет годовых наблюдений. Поэтому линия динамики не формируется, а пропуски не подменяются нулевыми значениями. Если страна включена в опубликованный рейтинг 2024 года, её оценку можно изучить отдельно, но нельзя считать её наблюдением за отдельный 2024 год. Отсутствие временного ряда не свидетельствует ни об улучшении, ни об ухудшении благополучия. Для временного сравнения следует выбрать страну с доступными годовыми оценками.`);
  const bars=$("#factor-scales");bars.replaceChildren();
  for(const [key,label] of Object.entries(factorLabels))renderBar(bars,label,country?.contributions?.[key],getFactorRange(countries,key));
  text("#country-description",country?
@@ -137,7 +137,7 @@ async function renderCompare(){
  const keys=Object.keys(factorLabels);
  function render(){
   const chosen=selects.map(el=>el.value).filter(Boolean);
-  if(new Set(chosen).size!==chosen.length){setStatus("compare-status","Выберите разные страны для сравнения.",true);$("#compare-table").replaceChildren();text("#compare-summary","Уберите повторяющиеся страны.");return;}
+  if(new Set(chosen).size!==chosen.length){setStatus("compare-status","Выберите разные страны для сравнения.",true);$("#compare-table").replaceChildren();text("#compare-summary","В сравнении обнаружены повторяющиеся страны. График и сводные значения не используются для вывода до выбора разных государств. Измените повторяющийся пункт: одно и то же государство не может считаться двумя независимыми объектами сравнения. После выбора разных стран будет построена годовая динамика, а отдельно — таблица вкладов факторов за 2024 год. Пока различия между странами не вычисляются и не интерпретируются.");chartInstances.get("compare-chart")?.destroy();chartInstances.delete("compare-chart");return;}
   setStatus("compare-status","Сравниваются "+chosen.map(n=>countryLabel(n,countries)).join(", ")+".");
   const years=[...new Set(h.records.map(r=>r.year))].sort((a,b)=>a-b);
   const datasets=chosen.map((name,i)=>{const m=new Map(countryAnnualRows(name,h.records).map(x=>[x.year,x.score]));return {label:countryLabel(name,countries),data:years.map(y=>m.get(y)??null),borderColor:palette[i],backgroundColor:palette[i],tension:.18,pointRadius:2,spanGaps:false};});
@@ -162,6 +162,10 @@ async function renderFactors(){
   const config=chartConfig("scatter",[{label:factorLabels[key]+" (вклад в баллах)",data:points,backgroundColor:palette[0],pointRadius:4,pointHoverRadius:6}],[],{yMin:0,yMax:10});
   config.options.plugins.tooltip={callbacks:{label:ctx=>ctx.raw.label+": вклад "+formatScore(ctx.raw.x)+", оценка "+formatScore(ctx.raw.y)}};
   chartInstances.get("factor-scatter")?.destroy();draw("factor-scatter",config);
+  if(points.length<2){
+   text("#factor-summary",`Для фактора «${factorLabels[key]}» доступно ${points.length} сопоставимых наблюдений. Этого недостаточно, чтобы анализировать взаимосвязь двух величин или делать вывод о её направлении. Отсутствующие показатели исключены из построения; их не заменяют нулями. Даже если отдельная точка показана, она описывает только соответствующую страну в отчётном срезе 2024 года. Для содержательного сравнения следует выбрать другой фактор с достаточным числом наблюдений. Сведения о методике приведены в разделе «О данных».`);
+   return;
+  }
   const hi=[...points].sort((a,b)=>b.y-a.y)[0],lo=[...points].sort((a,b)=>a.y-b.y)[0];
   text("#factor-summary",`Выбран фактор «${factorLabels[key]}». На диаграмме представлено ${points.length} стран отчёта 2024. Например, ${hi.label} имеет оценку жизни ${formatScore(hi.y)} и вклад фактора ${formatScore(hi.x)}, тогда как ${lo.label} — ${formatScore(lo.y)} и ${formatScore(lo.x)} соответственно. Каждая точка отражает пару значений из одного отчётного среза; возможная статистическая связь не является доказательством причинности.`);
  }
