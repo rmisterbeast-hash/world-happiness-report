@@ -37,6 +37,8 @@
 
 ## Технологии и структура
 
+- [18 проектных прототипов для трёх ширин](./docs/prototypes/README.md) и [интеллект-карта сайта](./docs/architecture/mindmap.svg). Прототипы не являются скриншотами: реальные снимки представлены в `docs/screenshots/`.
+
 HTML5, CSS3, JavaScript ES Modules, Chart.js 4, JSON, fetch(), localStorage, CSS Grid, Flexbox, CSS-переменные, Nested БЭМ. Верстка mobile-first. Без Bootstrap и серверной части.
 
 - `blocks/` — CSS-блоки, их `elements/` и `modifiers/`.
