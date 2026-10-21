@@ -301,3 +301,25 @@ test('Требования первого экрана: поиск в катал
  await expect(page.locator('#country-hero-score')).toHaveText('7,741');
  await expect(page.locator('#country-hero-rank')).toHaveText('№ 1');
 });
+
+test('Подлинные фотографии городов показываются в WebP и имеют авторство',async({page})=>{
+ await page.goto(base);
+ await expect(page.locator('.photo-gallery img')).toHaveCount(3);
+ await expect(page.locator('.photo-gallery figcaption a')).toHaveCount(3);
+ for(const picture of await page.locator('.photo-gallery img').all()){
+  await picture.scrollIntoViewIfNeeded();
+  await expect.poll(()=>picture.evaluate(img=>img.complete&&img.naturalWidth>100)).toBe(true);
+  expect(await picture.getAttribute('src')).toMatch(/^\.\/images\/city-.+\.webp$/);
+  expect(await picture.getAttribute('srcset')).toContain('1200w');
+  expect(await picture.getAttribute('loading')).toBe('lazy');
+ }
+ for(const name of ['countries.html','country.html?name=Finland','compare.html','factors.html','about.html']){
+  await page.goto(base+name);
+  const photo=page.locator('.hero__image--photo');
+  await expect(photo).toHaveCount(1);
+  await expect.poll(()=>photo.evaluate(img=>img.complete&&img.naturalWidth>100)).toBe(true);
+ }
+ await page.goto(base+'about.html');
+ await expect(page.locator('main')).toContainText('Maksym Kozlenko');
+ await expect(page.locator('main')).toContainText('CC BY-SA 4.0');
+});
