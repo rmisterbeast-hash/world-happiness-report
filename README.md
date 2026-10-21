@@ -29,7 +29,7 @@
 
 ## Воспроизводимость обработки
 
-[Открыть совместимый ноутбук Google Colab](https://colab.research.google.com/github/rmisterbeast-hash/world-happiness-report/blob/main/notebooks/preprocess_whr2024.ipynb) — программа подготовки трёх JSON из двух исходных CSV. Статус фактического запуска в Colab пока **не подтверждён**.
+[Открыть совместимый ноутбук Google Colab](https://colab.research.google.com/github/rmisterbeast-hash/world-happiness-report/blob/main/notebooks/preprocess_whr2024.ipynb) — программа подготовки трёх JSON из двух исходных CSV. **21.10.2026 подтверждён фактический запуск в интерфейсе Google Colab:** сохранённый [ноутбук в Google Colab](https://colab.research.google.com/drive/1u4BDxdGojPolkbXbXfUK7JpN3XP71KIC?usp=sharing) успешно сформировал `countries.json` (143 страны), `happiness.json` (2363 годовых наблюдения, 2005–2023) и `ranking.json`. Свидетельство запуска — скриншот вывода ячейки, предоставленный автором работы. Автоматическое выполнение в GitHub Actions также подтверждено.
 
 - `data/countries.json` — русские названия, регионы, рейтинг 2024 и шесть вкладов.
 - `data/happiness.json` — годовые наблюдения 2005–2023, без подстановки нуля в пропуски.
