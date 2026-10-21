@@ -1,0 +1,43 @@
+name: Capture analogue website evidence
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'scripts/capture_analogues.cjs'
+      - '.github/workflows/analogues.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  analogues:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install verified screenshot browser
+        run: |
+          npm install --no-save @playwright/test@1.56.1
+          npx playwright install --with-deps chromium
+      - name: Capture real public analogue pages (without substitution)
+        run: node scripts/capture_analogues.cjs
+      - name: Save verified analogue screenshots
+        if: success()
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add docs/analog-screenshots/
+          if ! git diff --staged --quiet; then
+            git commit -m "Capture six genuine analogue website views for comparison"
+            git fetch origin main
+            git rebase origin/main
+            git push origin HEAD:main
+          fi
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: analogue-screenshots-and-manifest
+          path: docs/analog-screenshots/
+          retention-days: 30
