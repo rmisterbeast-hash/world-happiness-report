@@ -1,0 +1,34 @@
+name: Compare direct Kaggle source with CSV mirrors
+on:
+  pull_request:
+    paths:
+      - 'scripts/compare_kaggle_original.py'
+      - '.github/workflows/kaggle-original.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'scripts/compare_kaggle_original.py'
+      - '.github/workflows/kaggle-original.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  comparison:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install data comparison dependencies
+        run: pip install kagglehub==0.3.13 pandas==2.3.3
+      - name: Download assigned original Kaggle archive and compare
+        run: python scripts/compare_kaggle_original.py
+      - name: Upload comparison report if available
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: kaggle-original-comparison
+          path: docs/audit/original-kaggle-comparison.json
+          if-no-files-found: warn
