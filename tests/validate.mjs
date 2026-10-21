@@ -56,7 +56,7 @@ console.log('PASS: data integrity, publication method distinctions, six HTML pag
 // Auxiliary KPI repeat and related-navigation cards are not separate analytical
 // sections: country has five semantic sections, preserving three principal
 // data-driven topics (overview, annual chart, factor scales).
-const countrySections=readFileSync('country.html','utf8').match(/<section\\b/g)||[];
+const countrySections=readFileSync('country.html','utf8').match(/<section\b/g)||[];
 assert.equal(countrySections.length,5,'country: five primary sections, no redundant analytical sections');
 for(const id of ['country-score','nearby-countries'])
  assert.ok(readFileSync('country.html','utf8').includes('id="'+id+'"'),'auxiliary content preserved: '+id);
