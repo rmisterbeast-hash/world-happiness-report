@@ -323,3 +323,35 @@ test('Подлинные фотографии городов показываю�
  await expect(page.locator('main')).toContainText('Maksym Kozlenko');
  await expect(page.locator('main')).toContainText('CC BY-SA 4.0');
 });
+
+// Edge cases for data-dependent commentary: short annual records, duplicate selections,
+// all factor choices, and zero weights. These cases do not modify source statistics.
+test('Одиночное годовое наблюдение: пояснение 40–70 слов без ложной динамики',async({page})=>{
+ await page.goto(base+'country.html?name=Cuba');
+ await expect(page.locator('#history-note')).toContainText('только одно годовое наблюдение');
+ const t=await page.locator('#history-note').innerText();
+ const n=t.trim().split(/\s+/).length;
+ expect(n).toBeGreaterThanOrEqual(40);expect(n).toBeLessThanOrEqual(70);
+ await expect(page.locator('#country-status')).toContainText('отсутствует в рейтинге 2024');
+});
+test('Повторяющаяся страна: нет ложного сравнения или старого графика',async({page})=>{
+ await page.goto(base+'compare.html');
+ await expect(page.locator('#compare-status')).toContainText('Финляндия');
+ await page.locator('#compare-two').selectOption('Finland');
+ await expect(page.locator('#compare-status')).toContainText('Выберите разные страны');
+ await expect(page.locator('#compare-summary')).toContainText('График и сводные значения не используются');
+ const n=(await page.locator('#compare-summary').innerText()).trim().split(/\s+/).length;
+ expect(n).toBeGreaterThanOrEqual(40);expect(n).toBeLessThanOrEqual(70);
+});
+test('Все шесть факторов имеют вывод 40–70 слов; нулевые веса отклоняются',async({page})=>{
+ await page.goto(base+'factors.html');
+ for(const factor of ['gdp','support','health','freedom','generosity','corruption']){
+  await page.locator('#factor-select').selectOption(factor);
+  await expect(page.locator('#factor-summary')).toContainText('Выбран фактор');
+  const n=(await page.locator('#factor-summary').innerText()).trim().split(/\s+/).length;
+  expect(n).toBeGreaterThanOrEqual(40);expect(n).toBeLessThanOrEqual(70);
+ }
+ await page.locator('#calculator-inputs input').evaluateAll(items=>items.forEach(e=>{e.value='0';e.dispatchEvent(new Event('input',{bubbles:true}));}));
+ await page.locator('#calculate-btn').click();
+ await expect(page.locator('#calculator-result')).toContainText('задайте ненулевой вес');
+});
