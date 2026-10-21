@@ -53,6 +53,13 @@ for(const file of ['data/countries.json','data/happiness.json','data/ranking.jso
 }
 assert.ok(readFileSync('about.html','utf8').includes('"@type":"Dataset"'),'Dataset schema');
 console.log('PASS: data integrity, publication method distinctions, six HTML pages and Dataset JSON-LD');
+// Auxiliary KPI repeat and related-navigation cards are not separate analytical
+// sections: country has five semantic sections, preserving three principal
+// data-driven topics (overview, annual chart, factor scales).
+const countrySections=readFileSync('country.html','utf8').match(/<section\b/g)||[];
+assert.equal(countrySections.length,5,'country: five primary sections, no redundant analytical sections');
+for(const id of ['country-score','nearby-countries'])
+ assert.ok(readFileSync('country.html','utf8').includes('id="'+id+'"'),'auxiliary content preserved: '+id);
 const about=readFileSync('about.html','utf8');
 const glossary=[...about.matchAll(/<dt>([^<]+)<\/dt><dd>([^<]+)<\/dd>/g)];
 assert.ok(glossary.length>=8 && glossary.length<=10,'8–10 glossary entries');
