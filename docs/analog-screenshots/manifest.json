@@ -1,0 +1,86 @@
+{
+  "generatedAt": "2026-10-21T12:46:40.572Z",
+  "method": "Chromium real external website screenshot for coursework comparative analysis",
+  "width": 1280,
+  "height": 840,
+  "results": [
+    {
+      "id": "whr-main",
+      "group": "World Happiness Report",
+      "kind": "main",
+      "url": "https://worldhappiness.report/ed/2024/",
+      "must": "World Happiness",
+      "shot": null,
+      "ok": false,
+      "status": 403,
+      "title": "Just a moment...",
+      "reason": "HTTP 403 text 273 expected World Happiness blocked true",
+      "textLength": 273
+    },
+    {
+      "id": "whr-inner",
+      "group": "World Happiness Report",
+      "kind": "inner",
+      "url": "https://worldhappiness.report/ed/2024/happiness-of-the-younger-the-older-and-those-in-between",
+      "must": "Happiness",
+      "shot": null,
+      "ok": false,
+      "status": 403,
+      "title": "Just a moment...",
+      "reason": "HTTP 403 text 273 expected Happiness blocked true",
+      "textLength": 273
+    },
+    {
+      "id": "owid-main",
+      "group": "Our World in Data",
+      "kind": "main",
+      "url": "https://ourworldindata.org/happiness-and-life-satisfaction",
+      "must": "Happiness",
+      "shot": "owid-main.jpg",
+      "ok": true,
+      "status": 200,
+      "title": "Happiness and Life Satisfaction | Our World in Data",
+      "reason": null,
+      "textLength": 20000
+    },
+    {
+      "id": "owid-inner",
+      "group": "Our World in Data",
+      "kind": "inner",
+      "url": "https://ourworldindata.org/grapher/happiness-cantril-ladder?tab=chart&time=2024",
+      "must": "Self-reported",
+      "shot": "owid-inner.jpg",
+      "ok": true,
+      "status": 200,
+      "title": "Self-reported life satisfaction, 2024",
+      "reason": null,
+      "textLength": 11392
+    },
+    {
+      "id": "oecd-main",
+      "group": "OECD Better Life Index",
+      "kind": "main",
+      "url": "https://www.oecd.org/en/data/tools/well-being-data-monitor/better-life-index.html",
+      "must": "Better Life",
+      "shot": null,
+      "ok": false,
+      "status": 403,
+      "title": "Just a moment...",
+      "reason": "HTTP 403 text 260 expected Better Life blocked true",
+      "textLength": 260
+    },
+    {
+      "id": "oecd-inner",
+      "group": "OECD Better Life Index",
+      "kind": "inner",
+      "url": "https://www.oecd.org/en/data/tools/well-being-data-monitor/current-well-being.html",
+      "must": "well-being",
+      "shot": null,
+      "ok": false,
+      "status": 403,
+      "title": "Just a moment...",
+      "reason": "HTTP 403 text 260 expected well-being blocked true",
+      "textLength": 260
+    }
+  ]
+}
