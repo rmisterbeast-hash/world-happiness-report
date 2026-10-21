@@ -75,6 +75,19 @@ def main():
   files=[p for p in original_dir.rglob("*.csv") if p.is_file()]
   print("Kaggle archive files:",[(x.name,x.stat().st_size) for x in files])
   report={"dataset":"jainaru/world-happiness-report-2024-yearly-updated","kaggleSourceFetched":True,"comparisons":{}}
+  # The publisher's declared license label is metadata, not proof of all upstream rights.
+  url="https://www.kaggle.com/api/v1/datasets/view/jainaru/world-happiness-report-2024-yearly-updated"
+  try:
+    metadata=json.loads(grab(url).decode("utf-8"))
+    raw_license=metadata.get("licenseName") or metadata.get("license")
+    declared=raw_license.get("name") if isinstance(raw_license,dict) else raw_license
+    report["licenseMetadata"]={"sourceUrl":url,"label":declared,"verifiedFromKaggleAPI":True,
+      "caution":"Uploader license metadata does not establish all upstream Gallup redistribution rights."}
+    print("Kaggle assigned dataset license label:",declared)
+  except Exception as exc:
+    report["licenseMetadata"]={"sourceUrl":url,"verifiedFromKaggleAPI":False,"error":str(exc)[:300]}
+    print("Kaggle license metadata not independently accessible:",type(exc).__name__)
+
   valid=True
   for kind in ("snapshot","annual"):
    f=choose(files,kind);raw=f.read_bytes()
